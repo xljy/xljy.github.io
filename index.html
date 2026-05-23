@@ -3,327 +3,646 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日5个英语单词 — 2026-05-21</title>
+<title>每日英语单词 — 2026-05-23 第2期</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --bg2: #1a1d2e;
+    --card: #1e2235;
+    --card2: #252a40;
+    --accent: #7c6af7;
+    --accent2: #56cfba;
+    --accent3: #f7a56a;
+    --text: #e8eaf6;
+    --text2: #9fa8c7;
+    --border: #2d3355;
+    --tag: #2c2f4a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
     min-height: 100vh;
-    padding: 40px 20px;
-    color: #e2e8f0;
+    padding: 0 0 60px;
   }
-  .container { max-width: 720px; margin: 0 auto; }
-  h1 {
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1d2e 0%, #141728 100%);
+    padding: 48px 24px 36px;
     text-align: center;
-    font-size: 28px;
-    margin-bottom: 8px;
-    color: #f8fafc;
-    letter-spacing: 1px;
-  }
-  .subtitle {
-    text-align: center;
-    font-size: 14px;
-    color: #94a3b8;
-    margin-bottom: 36px;
-  }
-  .word-card {
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    border: 1px solid #334155;
-    border-radius: 16px;
-    padding: 28px 32px;
-    margin-bottom: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
     overflow: hidden;
   }
-  .word-card::before {
+  .header::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
+    pointer-events: none;
   }
-  .word-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(59,130,246,0.12);
-  }
-  .word-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-  }
-  .word-num {
+  .header-badge {
+    display: inline-block;
+    background: var(--tag);
+    border: 1px solid var(--border);
+    color: var(--accent);
     font-size: 12px;
-    color: #64748b;
     font-weight: 600;
     letter-spacing: 2px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
   }
-  .word-title {
-    font-size: 28px;
+  .header h1 {
+    font-size: clamp(22px, 5vw, 36px);
     font-weight: 700;
-    color: #f1f5f9;
+    background: linear-gradient(90deg, #7c6af7, #56cfba);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .header-sub {
+    color: var(--text2);
+    font-size: 14px;
     letter-spacing: 0.5px;
   }
-  .phonetic {
-    font-size: 16px;
-    color: #94a3b8;
-    margin-bottom: 10px;
-    font-style: italic;
+
+  /* Nav dots */
+  .nav-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 0 4px;
   }
-  .meaning {
-    font-size: 16px;
-    color: #93c5fd;
-    margin-bottom: 14px;
-    font-weight: 500;
-    background: rgba(59,130,246,0.1);
-    display: inline-block;
-    padding: 4px 14px;
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: var(--accent);
+    transform: scale(1.3);
+  }
+
+  /* Main container */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Word card */
+  .word-card {
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .example {
-    background: rgba(30,41,59,0.6);
-    border-left: 3px solid #475569;
-    padding: 12px 16px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 14px;
-    font-size: 15px;
-    line-height: 1.7;
-    color: #cbd5e1;
+  .word-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(124,106,247,0.12);
   }
-  .example .en { color: #e2e8f0; }
-  .example .cn { color: #94a3b8; display: block; margin-top: 4px; }
-  .tip {
-    font-size: 14px;
-    color: #fbbf24;
+
+  .card-top {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
-    line-height: 1.6;
+    justify-content: space-between;
+    padding: 24px 24px 0;
+    gap: 16px;
   }
-  .tip::before { content: '💡'; flex-shrink: 0; }
-  .btn-row {
+
+  .word-info { flex: 1; }
+
+  .word-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.8;
+  }
+
+  .word-title {
+    font-size: clamp(26px, 5vw, 36px);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .word-phonetic {
     display: flex;
     gap: 10px;
-    margin-bottom: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 4px;
   }
-  .btn-pronounce {
+
+  .phonetic-tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    color: #fff;
+    background: var(--tag);
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+    color: var(--text2);
+    border: 1px solid var(--border);
+  }
+  .phonetic-tag .region {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent2);
+    font-family: 'Inter', sans-serif;
+    padding: 1px 5px;
+    background: rgba(86,207,186,0.12);
+    border-radius: 4px;
+  }
+
+  /* Speak buttons */
+  .speak-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .speak-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 12px;
     border: none;
-    padding: 8px 18px;
-    border-radius: 24px;
-    font-size: 14px;
     cursor: pointer;
+    font-size: 12px;
     font-weight: 600;
-    transition: all 0.2s;
     letter-spacing: 0.5px;
+    transition: all 0.2s;
+    white-space: nowrap;
   }
-  .btn-pronounce:hover {
-    background: linear-gradient(135deg, #60a5fa, #3b82f6);
-    transform: scale(1.03);
+  .speak-btn.us {
+    background: rgba(124,106,247,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(124,106,247,0.3);
   }
-  .btn-pronounce:active {
-    transform: scale(0.97);
+  .speak-btn.uk {
+    background: rgba(86,207,186,0.12);
+    color: var(--accent2);
+    border: 1px solid rgba(86,207,186,0.25);
   }
-  .btn-slow {
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
+  .speak-btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+  .speak-btn:active { transform: scale(0.96); }
+  .speak-icon { font-size: 14px; }
+
+  /* Definition */
+  .definition-wrap {
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
   }
-  .btn-slow:hover {
-    background: linear-gradient(135deg, #818cf8, #6366f1);
+  .pos-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
   }
-  .playing {
-    animation: pulse 1s ease-in-out infinite;
+  .pos-v  { background: rgba(247,165,106,0.15); color: var(--accent3); border: 1px solid rgba(247,165,106,0.3); }
+  .pos-n  { background: rgba(124,106,247,0.15); color: var(--accent);  border: 1px solid rgba(124,106,247,0.3); }
+  .pos-adj { background: rgba(86,207,186,0.12); color: var(--accent2); border: 1px solid rgba(86,207,186,0.25); }
+  .pos-adv { background: rgba(240,100,120,0.12); color: #f07080;        border: 1px solid rgba(240,100,120,0.25); }
+
+  .definition-text {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 500;
   }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
-    50% { box-shadow: 0 0 0 12px rgba(59,130,246,0); }
+
+  /* Divider */
+  .divider { height: 1px; background: var(--border); margin: 0 24px; }
+
+  /* Examples */
+  .examples { padding: 16px 24px; display: flex; flex-direction: column; gap: 12px; }
+
+  .example-item {
+    background: var(--card2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
   }
+  .example-en {
+    font-size: 14px;
+    color: #c8d0f0;
+    line-height: 1.6;
+    margin-bottom: 4px;
+    font-style: italic;
+  }
+  .example-zh {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+
+  /* Memory tip */
+  .memory-tip {
+    margin: 0 24px 24px;
+    background: linear-gradient(135deg, rgba(124,106,247,0.1), rgba(86,207,186,0.08));
+    border: 1px solid rgba(124,106,247,0.2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .tip-text { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .tip-text strong { color: var(--accent); }
+
+  /* Footer */
   .footer {
     text-align: center;
-    margin-top: 36px;
-    color: #475569;
+    color: var(--text2);
     font-size: 13px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    line-height: 1.8;
   }
-  .emoji-deco { font-size: 18px; }
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 560px) {
+    .card-top { flex-direction: column; }
+    .speak-group { flex-direction: row; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>📖 每日 5 个英语单词</h1>
-  <p class="subtitle">2026-05-21 · 本期主题：职场沟通与逻辑思维</p>
 
-  <!-- Word 1: Thorough -->
-  <div class="word-card">
-    <div class="word-header">
-      <span class="word-num">WORD 1 / 5</span>
+<div class="header">
+  <div class="header-badge">Daily English Words</div>
+  <h1>每日英语单词</h1>
+  <div class="header-sub">2026年5月23日 &nbsp;·&nbsp; 第 8 期 &nbsp;·&nbsp; 职场 & 生活常用词</div>
+</div>
+
+<div class="nav-dots" id="navDots">
+  <div class="dot active" onclick="scrollToCard(0)"></div>
+  <div class="dot" onclick="scrollToCard(1)"></div>
+  <div class="dot" onclick="scrollToCard(2)"></div>
+  <div class="dot" onclick="scrollToCard(3)"></div>
+  <div class="dot" onclick="scrollToCard(4)"></div>
+</div>
+
+<div class="container" id="cardContainer">
+
+  <!-- Word 1: dedicate -->
+  <div class="word-card" id="card0">
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word-number">Word 01 / 05</div>
+        <div class="word-title">dedicate</div>
+        <div class="word-phonetic">
+          <span class="phonetic-tag"><span class="region">US</span> /ˈdedɪkeɪt/</span>
+          <span class="phonetic-tag"><span class="region">UK</span> /ˈdedɪkeɪt/</span>
+        </div>
+      </div>
+      <div class="speak-group">
+        <button class="speak-btn us" onclick="speak('dedicate','us')">
+          <span class="speak-icon">🔊</span> 美式
+        </button>
+        <button class="speak-btn uk" onclick="speak('dedicate','uk')">
+          <span class="speak-icon">🔊</span> 英式
+        </button>
+      </div>
     </div>
-    <div class="word-title">thorough</div>
-    <div class="phonetic">/ˈθʌrəʊ/ &nbsp; <small>英</small> &nbsp; /ˈθɜːroʊ/ &nbsp; <small>美</small></div>
-    <div class="meaning">adj. 彻底的、全面的、仔细的</div>
-    <div class="btn-row">
-      <button class="btn-pronounce" onclick="speak('thorough', 'en-US', this)">🔊 美式读音</button>
-      <button class="btn-pronounce btn-slow" onclick="speak('thorough', 'en-GB', this)">🔊 英式读音</button>
+
+    <div class="definition-wrap">
+      <span class="pos-badge pos-v">v.</span>
+      <span class="definition-text">奉献；把…专用于；题献给</span>
     </div>
-    <div class="example">
-      <span class="en">We need a <strong>thorough</strong> review of the project before presenting it to the client.</span>
-      <span class="cn">在向客户展示之前，我们需要对项目进行一次彻底的审查。</span>
+
+    <div class="divider"></div>
+
+    <div class="examples">
+      <div class="example-item">
+        <div class="example-en">"She has <strong>dedicated</strong> her career to helping others."</div>
+        <div class="example-zh">她将自己的职业生涯奉献给了帮助他人。</div>
+      </div>
+      <div class="example-item">
+        <div class="example-en">"We need to <strong>dedicate</strong> more resources to this project."</div>
+        <div class="example-zh">我们需要为这个项目投入更多资源。</div>
+      </div>
     </div>
-    <div class="tip">把 "thorough" 想象成「深挖到底」—— tho-rough（虽然拼写不规律），就像你翻遍每个角落找东西，不放过任何细节。</div>
+
+    <div class="memory-tip">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">
+        <strong>记忆小贴士：</strong>词根 <em>de-</em>（彻底）+ <em>dic</em>（说/宣告）= 彻底宣告献给某人或某事。联想：dedicate → declare + donate，公开宣告将某物捐献出去。
+      </div>
+    </div>
   </div>
 
-  <!-- Word 2: Consensus -->
-  <div class="word-card">
-    <div class="word-header">
-      <span class="word-num">WORD 2 / 5</span>
+  <!-- Word 2: hesitate -->
+  <div class="word-card" id="card1">
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word-number">Word 02 / 05</div>
+        <div class="word-title">hesitate</div>
+        <div class="word-phonetic">
+          <span class="phonetic-tag"><span class="region">US</span> /ˈhezɪteɪt/</span>
+          <span class="phonetic-tag"><span class="region">UK</span> /ˈhezɪteɪt/</span>
+        </div>
+      </div>
+      <div class="speak-group">
+        <button class="speak-btn us" onclick="speak('hesitate','us')">
+          <span class="speak-icon">🔊</span> 美式
+        </button>
+        <button class="speak-btn uk" onclick="speak('hesitate','uk')">
+          <span class="speak-icon">🔊</span> 英式
+        </button>
+      </div>
     </div>
-    <div class="word-title">consensus</div>
-    <div class="phonetic">/kənˈsensəs/</div>
-    <div class="meaning">n. 共识、一致意见</div>
-    <div class="btn-row">
-      <button class="btn-pronounce" onclick="speak('consensus', 'en-US', this)">🔊 美式读音</button>
-      <button class="btn-pronounce btn-slow" onclick="speak('consensus', 'en-GB', this)">🔊 英式读音</button>
+
+    <div class="definition-wrap">
+      <span class="pos-badge pos-v">v.</span>
+      <span class="definition-text">犹豫；踌躇；不愿意（做某事）</span>
     </div>
-    <div class="example">
-      <span class="en">After two hours of discussion, the team finally reached a <strong>consensus</strong> on the marketing strategy.</span>
-      <span class="cn">经过两小时的讨论，团队终于就营销策略达成了共识。</span>
+
+    <div class="divider"></div>
+
+    <div class="examples">
+      <div class="example-item">
+        <div class="example-en">"Don't <strong>hesitate</strong> to contact me if you have any questions."</div>
+        <div class="example-zh">如有任何问题，请随时联系我，不必犹豫。</div>
+      </div>
+      <div class="example-item">
+        <div class="example-en">"He <strong>hesitated</strong> before giving his final answer."</div>
+        <div class="example-zh">他在给出最终答案之前犹豫了一下。</div>
+      </div>
     </div>
-    <div class="tip">词根 con-（共同）+ sensus（感觉）→ 大家感觉一样 → 共识。联想 "census"（人口普查）——都是收集信息以求达成一致认识。</div>
+
+    <div class="memory-tip">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">
+        <strong>记忆小贴士：</strong>联想 "he + sit + ate" → 他坐在那里犹豫着，连饭都吃了（浪费时间）。职场高频用语：<em>Please don't hesitate to reach out.</em> 是邮件结尾的礼貌用语。
+      </div>
+    </div>
   </div>
 
-  <!-- Word 3: Discrepancy -->
-  <div class="word-card">
-    <div class="word-header">
-      <span class="word-num">WORD 3 / 5</span>
+  <!-- Word 3: adapt -->
+  <div class="word-card" id="card2">
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word-number">Word 03 / 05</div>
+        <div class="word-title">adapt</div>
+        <div class="word-phonetic">
+          <span class="phonetic-tag"><span class="region">US</span> /əˈdæpt/</span>
+          <span class="phonetic-tag"><span class="region">UK</span> /əˈdæpt/</span>
+        </div>
+      </div>
+      <div class="speak-group">
+        <button class="speak-btn us" onclick="speak('adapt','us')">
+          <span class="speak-icon">🔊</span> 美式
+        </button>
+        <button class="speak-btn uk" onclick="speak('adapt','uk')">
+          <span class="speak-icon">🔊</span> 英式
+        </button>
+      </div>
     </div>
-    <div class="word-title">discrepancy</div>
-    <div class="phonetic">/dɪˈskrepənsi/</div>
-    <div class="meaning">n. 差异、不符、不一致</div>
-    <div class="btn-row">
-      <button class="btn-pronounce" onclick="speak('discrepancy', 'en-US', this)">🔊 美式读音</button>
-      <button class="btn-pronounce btn-slow" onclick="speak('discrepancy', 'en-GB', this)">🔊 英式读音</button>
+
+    <div class="definition-wrap">
+      <span class="pos-badge pos-v">v.</span>
+      <span class="definition-text">适应；调整；改编（作品）</span>
     </div>
-    <div class="example">
-      <span class="en">The accountant found a $500 <strong>discrepancy</strong> between the two financial reports.</span>
-      <span class="cn">会计发现两份财务报告之间存在 500 美元的差异。</span>
+
+    <div class="divider"></div>
+
+    <div class="examples">
+      <div class="example-item">
+        <div class="example-en">"You need to <strong>adapt</strong> quickly to the changing work environment."</div>
+        <div class="example-zh">你需要快速适应不断变化的工作环境。</div>
+      </div>
+      <div class="example-item">
+        <div class="example-en">"The novel was <strong>adapted</strong> into a popular TV series."</div>
+        <div class="example-zh">这部小说被改编成了一部热门电视剧。</div>
+      </div>
     </div>
-    <div class="tip">dis-（不/分开）+ crep（嘎吱声/裂缝）→ 中间有裂缝 → 不相符。"crep" 和 "crack" 音近，想象两块拼图之间有裂缝，对不上。</div>
+
+    <div class="memory-tip">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">
+        <strong>记忆小贴士：</strong><em>ad-</em>（向）+ <em>apt</em>（合适）= 向合适的方向调整，即"适应"。对比：<em>adopt</em>（采纳/收养）vs <em>adapt</em>（适应/改编）。
+      </div>
+    </div>
   </div>
 
-  <!-- Word 4: Viable -->
-  <div class="word-card">
-    <div class="word-header">
-      <span class="word-num">WORD 4 / 5</span>
+  <!-- Word 4: elaborate -->
+  <div class="word-card" id="card3">
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word-number">Word 04 / 05</div>
+        <div class="word-title">elaborate</div>
+        <div class="word-phonetic">
+          <span class="phonetic-tag"><span class="region">US</span> /ɪˈlæbəreɪt/ (v.) &nbsp; /ɪˈlæbərət/ (adj.)</span>
+        </div>
+        <div class="word-phonetic" style="margin-top:4px">
+          <span class="phonetic-tag"><span class="region">UK</span> /ɪˈlæbəreɪt/ (v.) &nbsp; /ɪˈlæbərət/ (adj.)</span>
+        </div>
+      </div>
+      <div class="speak-group">
+        <button class="speak-btn us" onclick="speak('elaborate','us')">
+          <span class="speak-icon">🔊</span> 美式
+        </button>
+        <button class="speak-btn uk" onclick="speak('elaborate','uk')">
+          <span class="speak-icon">🔊</span> 英式
+        </button>
+      </div>
     </div>
-    <div class="word-title">viable</div>
-    <div class="phonetic">/ˈvaɪəbl/</div>
-    <div class="meaning">adj. 可行的、能存活的</div>
-    <div class="btn-row">
-      <button class="btn-pronounce" onclick="speak('viable', 'en-US', this)">🔊 美式读音</button>
-      <button class="btn-pronounce btn-slow" onclick="speak('viable', 'en-GB', this)">🔊 英式读音</button>
+
+    <div class="definition-wrap">
+      <span class="pos-badge pos-v">v.</span>
+      <span class="definition-text">详述；阐述（on）</span>
+      <span class="pos-badge pos-adj" style="margin-left:6px">adj.</span>
+      <span class="definition-text">复杂的；精心制作的</span>
     </div>
-    <div class="example">
-      <span class="en">Is this a <strong>viable</strong> solution, or should we explore other options?</span>
-      <span class="cn">这是一个可行的解决方案吗，还是我们应该探索其他选项？</span>
+
+    <div class="divider"></div>
+
+    <div class="examples">
+      <div class="example-item">
+        <div class="example-en">"Could you <strong>elaborate</strong> on your proposal a bit more?"</div>
+        <div class="example-zh">你能对你的提案再详细说明一下吗？</div>
+      </div>
+      <div class="example-item">
+        <div class="example-en">"The team put together an <strong>elaborate</strong> presentation for the client."</div>
+        <div class="example-zh">团队为客户精心准备了一场详尽的演示。</div>
+      </div>
     </div>
-    <div class="tip">来自法语 "vie"（生命），via（道路）+ able（能够）→ 有路可走 → 可行的。想成 "有生命力的方案"，就像种子能生根发芽一样。</div>
+
+    <div class="memory-tip">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">
+        <strong>记忆小贴士：</strong>词根 <em>labor</em>（劳动）= 花大力气工作 → 精心制作/详细阐述。会议中常用问句：<em>Could you elaborate on that?</em>（请问能详细说明吗？）
+      </div>
+    </div>
   </div>
 
-  <!-- Word 5: Rationale -->
-  <div class="word-card">
-    <div class="word-header">
-      <span class="word-num">WORD 5 / 5</span>
+  <!-- Word 5: momentum -->
+  <div class="word-card" id="card4">
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word-number">Word 05 / 05</div>
+        <div class="word-title">momentum</div>
+        <div class="word-phonetic">
+          <span class="phonetic-tag"><span class="region">US</span> /moʊˈmentəm/</span>
+          <span class="phonetic-tag"><span class="region">UK</span> /məˈmentəm/</span>
+        </div>
+      </div>
+      <div class="speak-group">
+        <button class="speak-btn us" onclick="speak('momentum','us')">
+          <span class="speak-icon">🔊</span> 美式
+        </button>
+        <button class="speak-btn uk" onclick="speak('momentum','uk')">
+          <span class="speak-icon">🔊</span> 英式
+        </button>
+      </div>
     </div>
-    <div class="word-title">rationale</div>
-    <div class="phonetic">/ˌræʃəˈnæl/</div>
-    <div class="meaning">n. 基本原理、理由、逻辑依据</div>
-    <div class="btn-row">
-      <button class="btn-pronounce" onclick="speak('rationale', 'en-US', this)">🔊 美式读音</button>
-      <button class="btn-pronounce btn-slow" onclick="speak('rationale', 'en-GB', this)">🔊 英式读音</button>
+
+    <div class="definition-wrap">
+      <span class="pos-badge pos-n">n.</span>
+      <span class="definition-text">势头；动力；（物理）动量</span>
     </div>
-    <div class="example">
-      <span class="en">Could you explain the <strong>rationale</strong> behind your decision to restructure the department?</span>
-      <span class="cn">你能解释一下你决定重组部门的理由吗？</span>
+
+    <div class="divider"></div>
+
+    <div class="examples">
+      <div class="example-item">
+        <div class="example-en">"The project is gaining <strong>momentum</strong> and we need to keep it going."</div>
+        <div class="example-zh">项目正在获得势头，我们需要保持下去。</div>
+      </div>
+      <div class="example-item">
+        <div class="example-en">"Don't lose the <strong>momentum</strong> after such a strong start."</div>
+        <div class="example-zh">开了个好头之后，不要失去这股势头。</div>
+      </div>
     </div>
-    <div class="tip">和 "rational"（理性的）同源。记住它的发音：rash-uh-NAL（最后音节重读）。当你需要别人解释"为什么这么做"时，用它比 "reason" 更正式、更有分量。</div>
+
+    <div class="memory-tip">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">
+        <strong>记忆小贴士：</strong>源自拉丁语，与 <em>moment</em>（瞬间/时刻）同根 → 每个时刻积累的力量 = 势头/动力。常见搭配：<em>build/gain/maintain/lose momentum</em>（积累/获得/保持/失去势头）。
+      </div>
+    </div>
   </div>
 
+</div><!-- end .container -->
+
+<div class="container" style="padding-top:0">
   <div class="footer">
-    📅 每日 5 词 ｜ 积少成多，日日精进 ｜ WorkBuddy 自动生成
+    <div>📅 2026年5月23日 &nbsp;·&nbsp; 第 8 期</div>
+    <div style="margin-top:6px">今日单词：<strong>dedicate · hesitate · adapt · elaborate · momentum</strong></div>
+    <div style="margin-top:8px; font-size:12px; opacity:0.6">
+      发音由浏览器 Web Speech API 提供 &nbsp;|&nbsp; 每日更新
+    </div>
   </div>
 </div>
 
 <script>
-// 使用免费在线发音服务，Firefox/Chrome 均可用
-// 优先使用 Google TTS（免 API key），美式/英式真正区分
+// ---------- 导航点高亮 ----------
+function scrollToCard(idx) {
+  const cards = document.querySelectorAll('.word-card');
+  if (cards[idx]) {
+    cards[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
 
-const AUDIO_CACHE = {};
+// IntersectionObserver 更新导航点
+const dots = document.querySelectorAll('.dot');
+const cards = document.querySelectorAll('.word-card');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = [...cards].indexOf(entry.target);
+      dots.forEach(d => d.classList.remove('active'));
+      if (dots[idx]) dots[idx].classList.add('active');
+    }
+  });
+}, { threshold: 0.6 });
+cards.forEach(c => observer.observe(c));
 
-function speak(word, lang, btn) {
-  const cacheKey = word + '_' + lang;
-  btn.classList.add('playing');
+// ---------- 发音 ----------
+let voices = [];
+function loadVoices() {
+  voices = window.speechSynthesis.getVoices();
+}
+window.speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
 
-  // Google TTS：tl=en-us（美式）/ tl=en-gb（英式）
-  const accent = lang === 'en-GB' ? 'en-gb' : 'en-us';
-  const audioUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=' + accent + '&client=tw-ob&q=' + encodeURIComponent(word);
-
-  // 如果缓存里有，直接播放
-  if (AUDIO_CACHE[cacheKey]) {
-    const audio = AUDIO_CACHE[cacheKey];
-    audio.currentTime = 0;
-    audio.play();
-    audio.onended = function() { btn.classList.remove('playing'); };
-    audio.onerror = function() { btn.classList.remove('playing'); fallbackSpeak(word, lang, btn); };
+function speak(word, accent) {
+  if (!window.speechSynthesis) {
+    alert('您的浏览器不支持语音合成功能');
     return;
   }
-
-  const audio = new Audio();
-  AUDIO_CACHE[cacheKey] = audio;
-
-  audio.src = audioUrl;
-  audio.play().then(function() {
-    audio.onended = function() { btn.classList.remove('playing'); };
-  }).catch(function() {
-    // Google 被墙或失败，降级用 Web Speech API
-    console.log('在线发音失败，降级使用本地语音');
-    btn.classList.remove('playing');
-    fallbackSpeak(word, lang, btn);
-  });
-
-  audio.onerror = function() {
-    btn.classList.remove('playing');
-    fallbackSpeak(word, lang, btn);
-  };
-}
-
-// 降级方案：Web Speech API（Firefox 兼容）
-function fallbackSpeak(word, lang, btn) {
-  if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(word);
 
-  // Firefox 中尝试选对应口音的 voice
-  const voices = speechSynthesis.getVoices();
-  const target = lang === 'en-GB'
-    ? voices.find(function(v) { return v.lang.startsWith('en-GB') || v.name.includes('British') || v.name.includes('UK'); })
-    : voices.find(function(v) { return v.lang.startsWith('en-US') || v.name.includes('US') || v.name.includes('America'); });
-  if (target) utter.voice = target;
-  else utter.lang = lang;
+  const utt = new SpeechSynthesisUtterance(word);
+  utt.rate = 0.88;
+  utt.pitch = 1;
 
-  utter.rate = 0.88;
-  btn.classList.add('playing');
-  utter.onend = function() { btn.classList.remove('playing'); };
-  utter.onerror = function() { btn.classList.remove('playing'); };
-  window.speechSynthesis.speak(utter);
+  const lang = accent === 'us' ? 'en-US' : 'en-GB';
+  utt.lang = lang;
+
+  if (voices.length === 0) {
+    voices = window.speechSynthesis.getVoices();
+  }
+
+  // 优先找 name 包含 accent 关键词的语音
+  const preferNames = accent === 'us'
+    ? ['samantha', 'alex', 'zira', 'david', 'google us', 'en-us']
+    : ['daniel', 'kate', 'serena', 'google uk', 'en-gb'];
+
+  let chosen = null;
+  for (const name of preferNames) {
+    const found = voices.find(v =>
+      v.lang.toLowerCase().startsWith(lang.toLowerCase().replace('-', '').slice(0, 2)) &&
+      v.name.toLowerCase().includes(name)
+    );
+    if (found) { chosen = found; break; }
+  }
+  // 回退：任意匹配语言的语音
+  if (!chosen) {
+    chosen = voices.find(v => v.lang.toLowerCase() === lang.toLowerCase()) ||
+             voices.find(v => v.lang.toLowerCase().startsWith(lang.slice(0,2).toLowerCase()));
+  }
+  if (chosen) utt.voice = chosen;
+
+  window.speechSynthesis.speak(utt);
 }
-
-// 预加载语音列表（用于降级方案）
-speechSynthesis.getVoices();
-speechSynthesis.onvoiceschanged = function() { speechSynthesis.getVoices(); };
 </script>
 </body>
 </html>
