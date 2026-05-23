@@ -258,16 +258,47 @@
 </div>
 
 <script>
+// 缓存已加载的语音列表
+let voicesReady = false;
+let usVoices = [];
+let gbVoices = [];
+
+function loadVoices() {
+  const voices = speechSynthesis.getVoices();
+  usVoices = voices.filter(v => v.lang.startsWith('en-US') || v.name.includes('US') || v.name.includes('America'));
+  gbVoices = voices.filter(v => v.lang.startsWith('en-GB') || v.lang.startsWith('en-UK') || v.name.includes('GB') || v.name.includes('UK') || v.name.includes('British'));
+  voicesReady = true;
+}
+
+// Chrome 异步加载语音，需要监听事件
+speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
+
 function speak(word, lang, btn) {
   if (!window.speechSynthesis) {
     alert('您的浏览器不支持语音合成。请使用 Chrome、Edge 或 Safari。');
     return;
   }
+
   window.speechSynthesis.cancel();
+
   const utter = new SpeechSynthesisUtterance(word);
-  utter.lang = lang;
-  utter.rate = lang === 'en-GB' ? 0.85 : 0.9;
+  utter.rate = 0.88;
   utter.pitch = 1.0;
+
+  // 尝试匹配对应口音的语音
+  const targetVoices = lang === 'en-GB' ? gbVoices : usVoices;
+  if (targetVoices.length > 0) {
+    // 优先选第一个匹配口音的语音
+    utter.voice = targetVoices[0];
+    utter.lang = targetVoices[0].lang;
+  } else {
+    // 没有匹配口音时，降级用 lang 属性
+    utter.lang = lang;
+  }
+
+  // 调试：在控制台显示实际使用的语音
+  console.log('使用语音:', utter.voice ? utter.voice.name : utter.lang, '| 口音:', lang);
 
   // Mark button as playing
   btn.classList.add('playing');
