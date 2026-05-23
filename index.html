@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日5个英语单词 — 2026-05-21</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #e2e8f0;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #f8fafc;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 36px;
+  }
+  .word-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .word-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  }
+  .word-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(59,130,246,0.12);
+  }
+  .word-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .word-num {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .word-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f1f5f9;
+    letter-spacing: 0.5px;
+  }
+  .phonetic {
+    font-size: 16px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .meaning {
+    font-size: 16px;
+    color: #93c5fd;
+    margin-bottom: 14px;
+    font-weight: 500;
+    background: rgba(59,130,246,0.1);
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+  .example {
+    background: rgba(30,41,59,0.6);
+    border-left: 3px solid #475569;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #cbd5e1;
+  }
+  .example .en { color: #e2e8f0; }
+  .example .cn { color: #94a3b8; display: block; margin-top: 4px; }
+  .tip {
+    font-size: 14px;
+    color: #fbbf24;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.6;
+  }
+  .tip::before { content: '💡'; flex-shrink: 0; }
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .btn-pronounce {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 24px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .btn-pronounce:hover {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    transform: scale(1.03);
+  }
+  .btn-pronounce:active {
+    transform: scale(0.97);
+  }
+  .btn-slow {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+  }
+  .btn-slow:hover {
+    background: linear-gradient(135deg, #818cf8, #6366f1);
+  }
+  .playing {
+    animation: pulse 1s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(59,130,246,0); }
+  }
+  .footer {
+    text-align: center;
+    margin-top: 36px;
+    color: #475569;
+    font-size: 13px;
+  }
+  .emoji-deco { font-size: 18px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📖 每日 5 个英语单词</h1>
+  <p class="subtitle">2026-05-21 · 本期主题：职场沟通与逻辑思维</p>
+
+  <!-- Word 1: Thorough -->
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">WORD 1 / 5</span>
+    </div>
+    <div class="word-title">thorough</div>
+    <div class="phonetic">/ˈθʌrəʊ/ &nbsp; <small>英</small> &nbsp; /ˈθɜːroʊ/ &nbsp; <small>美</small></div>
+    <div class="meaning">adj. 彻底的、全面的、仔细的</div>
+    <div class="btn-row">
+      <button class="btn-pronounce" onclick="speak('thorough', 'en-US', this)">🔊 美式读音</button>
+      <button class="btn-pronounce btn-slow" onclick="speak('thorough', 'en-GB', this)">🔊 英式读音</button>
+    </div>
+    <div class="example">
+      <span class="en">We need a <strong>thorough</strong> review of the project before presenting it to the client.</span>
+      <span class="cn">在向客户展示之前，我们需要对项目进行一次彻底的审查。</span>
+    </div>
+    <div class="tip">把 "thorough" 想象成「深挖到底」—— tho-rough（虽然拼写不规律），就像你翻遍每个角落找东西，不放过任何细节。</div>
+  </div>
+
+  <!-- Word 2: Consensus -->
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">WORD 2 / 5</span>
+    </div>
+    <div class="word-title">consensus</div>
+    <div class="phonetic">/kənˈsensəs/</div>
+    <div class="meaning">n. 共识、一致意见</div>
+    <div class="btn-row">
+      <button class="btn-pronounce" onclick="speak('consensus', 'en-US', this)">🔊 美式读音</button>
+      <button class="btn-pronounce btn-slow" onclick="speak('consensus', 'en-GB', this)">🔊 英式读音</button>
+    </div>
+    <div class="example">
+      <span class="en">After two hours of discussion, the team finally reached a <strong>consensus</strong> on the marketing strategy.</span>
+      <span class="cn">经过两小时的讨论，团队终于就营销策略达成了共识。</span>
+    </div>
+    <div class="tip">词根 con-（共同）+ sensus（感觉）→ 大家感觉一样 → 共识。联想 "census"（人口普查）——都是收集信息以求达成一致认识。</div>
+  </div>
+
+  <!-- Word 3: Discrepancy -->
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">WORD 3 / 5</span>
+    </div>
+    <div class="word-title">discrepancy</div>
+    <div class="phonetic">/dɪˈskrepənsi/</div>
+    <div class="meaning">n. 差异、不符、不一致</div>
+    <div class="btn-row">
+      <button class="btn-pronounce" onclick="speak('discrepancy', 'en-US', this)">🔊 美式读音</button>
+      <button class="btn-pronounce btn-slow" onclick="speak('discrepancy', 'en-GB', this)">🔊 英式读音</button>
+    </div>
+    <div class="example">
+      <span class="en">The accountant found a $500 <strong>discrepancy</strong> between the two financial reports.</span>
+      <span class="cn">会计发现两份财务报告之间存在 500 美元的差异。</span>
+    </div>
+    <div class="tip">dis-（不/分开）+ crep（嘎吱声/裂缝）→ 中间有裂缝 → 不相符。"crep" 和 "crack" 音近，想象两块拼图之间有裂缝，对不上。</div>
+  </div>
+
+  <!-- Word 4: Viable -->
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">WORD 4 / 5</span>
+    </div>
+    <div class="word-title">viable</div>
+    <div class="phonetic">/ˈvaɪəbl/</div>
+    <div class="meaning">adj. 可行的、能存活的</div>
+    <div class="btn-row">
+      <button class="btn-pronounce" onclick="speak('viable', 'en-US', this)">🔊 美式读音</button>
+      <button class="btn-pronounce btn-slow" onclick="speak('viable', 'en-GB', this)">🔊 英式读音</button>
+    </div>
+    <div class="example">
+      <span class="en">Is this a <strong>viable</strong> solution, or should we explore other options?</span>
+      <span class="cn">这是一个可行的解决方案吗，还是我们应该探索其他选项？</span>
+    </div>
+    <div class="tip">来自法语 "vie"（生命），via（道路）+ able（能够）→ 有路可走 → 可行的。想成 "有生命力的方案"，就像种子能生根发芽一样。</div>
+  </div>
+
+  <!-- Word 5: Rationale -->
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">WORD 5 / 5</span>
+    </div>
+    <div class="word-title">rationale</div>
+    <div class="phonetic">/ˌræʃəˈnæl/</div>
+    <div class="meaning">n. 基本原理、理由、逻辑依据</div>
+    <div class="btn-row">
+      <button class="btn-pronounce" onclick="speak('rationale', 'en-US', this)">🔊 美式读音</button>
+      <button class="btn-pronounce btn-slow" onclick="speak('rationale', 'en-GB', this)">🔊 英式读音</button>
+    </div>
+    <div class="example">
+      <span class="en">Could you explain the <strong>rationale</strong> behind your decision to restructure the department?</span>
+      <span class="cn">你能解释一下你决定重组部门的理由吗？</span>
+    </div>
+    <div class="tip">和 "rational"（理性的）同源。记住它的发音：rash-uh-NAL（最后音节重读）。当你需要别人解释"为什么这么做"时，用它比 "reason" 更正式、更有分量。</div>
+  </div>
+
+  <div class="footer">
+    📅 每日 5 词 ｜ 积少成多，日日精进 ｜ WorkBuddy 自动生成
+  </div>
+</div>
+
+<script>
+function speak(word, lang, btn) {
+  if (!window.speechSynthesis) {
+    alert('您的浏览器不支持语音合成。请使用 Chrome、Edge 或 Safari。');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(word);
+  utter.lang = lang;
+  utter.rate = lang === 'en-GB' ? 0.85 : 0.9;
+  utter.pitch = 1.0;
+
+  // Mark button as playing
+  btn.classList.add('playing');
+
+  utter.onend = function() {
+    btn.classList.remove('playing');
+  };
+  utter.onerror = function() {
+    btn.classList.remove('playing');
+  };
+
+  window.speechSynthesis.speak(utter);
+}
+</script>
+</body>
+</html>
