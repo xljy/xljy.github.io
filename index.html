@@ -258,60 +258,72 @@
 </div>
 
 <script>
-// 缓存已加载的语音列表
-let voicesReady = false;
-let usVoices = [];
-let gbVoices = [];
+// 使用免费在线发音服务，Firefox/Chrome 均可用
+// 优先使用 Google TTS（免 API key），美式/英式真正区分
 
-function loadVoices() {
-  const voices = speechSynthesis.getVoices();
-  usVoices = voices.filter(v => v.lang.startsWith('en-US') || v.name.includes('US') || v.name.includes('America'));
-  gbVoices = voices.filter(v => v.lang.startsWith('en-GB') || v.lang.startsWith('en-UK') || v.name.includes('GB') || v.name.includes('UK') || v.name.includes('British'));
-  voicesReady = true;
-}
-
-// Chrome 异步加载语音，需要监听事件
-speechSynthesis.onvoiceschanged = loadVoices;
-loadVoices();
+const AUDIO_CACHE = {};
 
 function speak(word, lang, btn) {
-  if (!window.speechSynthesis) {
-    alert('您的浏览器不支持语音合成。请使用 Chrome、Edge 或 Safari。');
+  const cacheKey = word + '_' + lang;
+  btn.classList.add('playing');
+
+  // Google TTS：tl=en-us（美式）/ tl=en-gb（英式）
+  const accent = lang === 'en-GB' ? 'en-gb' : 'en-us';
+  const audioUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=' + accent + '&client=tw-ob&q=' + encodeURIComponent(word);
+
+  // 如果缓存里有，直接播放
+  if (AUDIO_CACHE[cacheKey]) {
+    const audio = AUDIO_CACHE[cacheKey];
+    audio.currentTime = 0;
+    audio.play();
+    audio.onended = function() { btn.classList.remove('playing'); };
+    audio.onerror = function() { btn.classList.remove('playing'); fallbackSpeak(word, lang, btn); };
     return;
   }
 
+  const audio = new Audio();
+  AUDIO_CACHE[cacheKey] = audio;
+
+  audio.src = audioUrl;
+  audio.play().then(function() {
+    audio.onended = function() { btn.classList.remove('playing'); };
+  }).catch(function() {
+    // Google 被墙或失败，降级用 Web Speech API
+    console.log('在线发音失败，降级使用本地语音');
+    btn.classList.remove('playing');
+    fallbackSpeak(word, lang, btn);
+  });
+
+  audio.onerror = function() {
+    btn.classList.remove('playing');
+    fallbackSpeak(word, lang, btn);
+  };
+}
+
+// 降级方案：Web Speech API（Firefox 兼容）
+function fallbackSpeak(word, lang, btn) {
+  if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-
   const utter = new SpeechSynthesisUtterance(word);
+
+  // Firefox 中尝试选对应口音的 voice
+  const voices = speechSynthesis.getVoices();
+  const target = lang === 'en-GB'
+    ? voices.find(function(v) { return v.lang.startsWith('en-GB') || v.name.includes('British') || v.name.includes('UK'); })
+    : voices.find(function(v) { return v.lang.startsWith('en-US') || v.name.includes('US') || v.name.includes('America'); });
+  if (target) utter.voice = target;
+  else utter.lang = lang;
+
   utter.rate = 0.88;
-  utter.pitch = 1.0;
-
-  // 尝试匹配对应口音的语音
-  const targetVoices = lang === 'en-GB' ? gbVoices : usVoices;
-  if (targetVoices.length > 0) {
-    // 优先选第一个匹配口音的语音
-    utter.voice = targetVoices[0];
-    utter.lang = targetVoices[0].lang;
-  } else {
-    // 没有匹配口音时，降级用 lang 属性
-    utter.lang = lang;
-  }
-
-  // 调试：在控制台显示实际使用的语音
-  console.log('使用语音:', utter.voice ? utter.voice.name : utter.lang, '| 口音:', lang);
-
-  // Mark button as playing
   btn.classList.add('playing');
-
-  utter.onend = function() {
-    btn.classList.remove('playing');
-  };
-  utter.onerror = function() {
-    btn.classList.remove('playing');
-  };
-
+  utter.onend = function() { btn.classList.remove('playing'); };
+  utter.onerror = function() { btn.classList.remove('playing'); };
   window.speechSynthesis.speak(utter);
 }
+
+// 预加载语音列表（用于降级方案）
+speechSynthesis.getVoices();
+speechSynthesis.onvoiceschanged = function() { speechSynthesis.getVoices(); };
 </script>
 </body>
 </html>
