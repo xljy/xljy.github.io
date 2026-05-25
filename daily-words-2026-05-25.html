@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语单词 · 2026-05-25</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d2e;
+      --card-border: #2d3153;
+      --accent: #6c8df7;
+      --accent2: #f06b8d;
+      --text: #e4e7f1;
+      --muted: #8892b0;
+      --tag-bg: #252945;
+      --btn-us: #3b5bdb;
+      --btn-gb: #7048e8;
+      --tip-bg: #1e2640;
+      --tip-border: #4a90e2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 0.8rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #a8c0ff, #f9a8d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.4rem;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ── Progress dots ── */
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .dot.active { background: var(--accent); transform: scale(1.3); }
+
+    /* ── Card Container ── */
+    .cards {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ── Word Card ── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(108,141,247,0.15);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .card-number {
+      position: absolute;
+      top: 1.2rem; right: 1.4rem;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--card-border);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .word {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .phonetic {
+      font-size: 1rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .pos-tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+      margin-bottom: 0.8rem;
+    }
+
+    .meaning {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* Speak buttons */
+    .speak-btns {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .speak-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.42rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: filter 0.2s, transform 0.15s;
+      color: #fff;
+    }
+    .speak-btn:hover { filter: brightness(1.2); transform: scale(1.03); }
+    .speak-btn:active { transform: scale(0.97); }
+    .speak-btn.us { background: var(--btn-us); }
+    .speak-btn.gb { background: var(--btn-gb); }
+    .speak-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* Examples */
+    .examples-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+    .example {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 0.9rem;
+    }
+    .example .en {
+      font-size: 0.95rem;
+      color: #c9d1e9;
+      line-height: 1.55;
+      font-style: italic;
+      margin-bottom: 0.2rem;
+    }
+    .example .zh {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Memory tip */
+    .tip {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      background: var(--tip-bg);
+      border: 1px solid var(--tip-border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      margin-top: 1.2rem;
+    }
+    .tip-icon {
+      font-size: 1.1rem;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .tip-text {
+      font-size: 0.88rem;
+      color: #a8c4f0;
+      line-height: 1.6;
+    }
+    .tip-text strong { color: #d0e4ff; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 3.5rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 2;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 540px) {
+      .card { padding: 1.4rem 1.2rem; }
+      .word { font-size: 1.6rem; }
+      header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Day 9 · May 25, 2026</div>
+  <h1>每日英语单词</h1>
+  <p>Daily Vocabulary · 职场 &amp; 生活实用词汇</p>
+</header>
+
+<div class="progress-dots" id="dots">
+  <div class="dot active" data-i="0"></div>
+  <div class="dot" data-i="1"></div>
+  <div class="dot" data-i="2"></div>
+  <div class="dot" data-i="3"></div>
+  <div class="dot" data-i="4"></div>
+</div>
+
+<div class="cards" id="cards">
+
+  <!-- ① diligent -->
+  <div class="card" id="card-0">
+    <span class="card-number">01</span>
+    <div class="word-row">
+      <span class="word">diligent</span>
+      <span class="phonetic">US /ˈdɪlɪdʒənt/ · GB /ˈdɪlɪdʒ(ə)nt/</span>
+    </div>
+    <span class="pos-tag">adj.</span>
+    <div class="meaning">勤奋的；刻苦的 — 形容一个人做事认真、努力，持续付出努力</div>
+    <div class="speak-btns">
+      <button class="speak-btn us" onclick="speak('diligent','us')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇺🇸 美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('diligent','gb')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇬🇧 英式
+      </button>
+    </div>
+    <div class="examples-title">例句</div>
+    <div class="example">
+      <div class="en">"She is a <strong>diligent</strong> employee who always meets her deadlines."</div>
+      <div class="zh">她是一名勤奋的员工，总能按时完成任务。</div>
+    </div>
+    <div class="example">
+      <div class="en">"Being <strong>diligent</strong> in your studies will pay off in the long run."</div>
+      <div class="zh">在学习上保持勤奋，从长远来看是值得的。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong> <em>dili</em>（谐音"第力"）+ <em>gent</em>（绅士）→ 用力工作的绅士 = 勤奋。联想：勤奋的人总像绅士一样认真对待每一件事。</span>
+    </div>
+  </div>
+
+  <!-- ② foster -->
+  <div class="card" id="card-1">
+    <span class="card-number">02</span>
+    <div class="word-row">
+      <span class="word">foster</span>
+      <span class="phonetic">US /ˈfɔːstər/ · GB /ˈfɒstə/</span>
+    </div>
+    <span class="pos-tag">v. / adj.</span>
+    <div class="meaning">培养；促进；寄养的 — 作动词指积极促进某事物的发展；也指临时抚养他人孩子</div>
+    <div class="speak-btns">
+      <button class="speak-btn us" onclick="speak('foster','us')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇺🇸 美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('foster','gb')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇬🇧 英式
+      </button>
+    </div>
+    <div class="examples-title">例句</div>
+    <div class="example">
+      <div class="en">"Good management can <strong>foster</strong> a culture of innovation in the workplace."</div>
+      <div class="zh">良好的管理能在职场中培养创新文化。</div>
+    </div>
+    <div class="example">
+      <div class="en">"The program aims to <strong>foster</strong> trust between different communities."</div>
+      <div class="zh">该计划旨在促进不同社区之间的信任。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong> 联想 "foster care"（寄养照料）—— 寄养家庭精心呵护孩子成长，就像"培养"某种东西一样。职场常见搭配：<em>foster teamwork / foster creativity</em>。</span>
+    </div>
+  </div>
+
+  <!-- ③ coherent -->
+  <div class="card" id="card-2">
+    <span class="card-number">03</span>
+    <div class="word-row">
+      <span class="word">coherent</span>
+      <span class="phonetic">US /koʊˈhɪrənt/ · GB /kəʊˈhɪərənt/</span>
+    </div>
+    <span class="pos-tag">adj.</span>
+    <div class="meaning">条理清晰的；连贯的 — 形容思路、表达或计划逻辑严密、前后一致，易于理解</div>
+    <div class="speak-btns">
+      <button class="speak-btn us" onclick="speak('coherent','us')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇺🇸 美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('coherent','gb')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇬🇧 英式
+      </button>
+    </div>
+    <div class="examples-title">例句</div>
+    <div class="example">
+      <div class="en">"Please present a <strong>coherent</strong> argument so everyone can follow your point."</div>
+      <div class="zh">请呈现一个逻辑清晰的论点，这样大家才能理解你的观点。</div>
+    </div>
+    <div class="example">
+      <div class="en">"The project lacks a <strong>coherent</strong> strategy — we need to align on goals first."</div>
+      <div class="zh">这个项目缺乏连贯的策略——我们需要先统一目标。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong> <em>co-</em>（共同）+ <em>here</em>（这里）+ <em>-nt</em> → 所有内容"都在一起"→ 连贯的、有条理的。反义词 <em>incoherent</em> = 语无伦次的。</span>
+    </div>
+  </div>
+
+  <!-- ④ assertive -->
+  <div class="card" id="card-3">
+    <span class="card-number">04</span>
+    <div class="word-row">
+      <span class="word">assertive</span>
+      <span class="phonetic">US /əˈsɜːrtɪv/ · GB /əˈsɜːtɪv/</span>
+    </div>
+    <span class="pos-tag">adj.</span>
+    <div class="meaning">自信果断的；坚定表达自我的 — 形容人能清楚、自信地表达意见和需求，不强硬也不软弱</div>
+    <div class="speak-btns">
+      <button class="speak-btn us" onclick="speak('assertive','us')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇺🇸 美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('assertive','gb')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇬🇧 英式
+      </button>
+    </div>
+    <div class="examples-title">例句</div>
+    <div class="example">
+      <div class="en">"Being <strong>assertive</strong> in meetings helps you get your ideas heard."</div>
+      <div class="zh">在会议上果断发言，有助于让你的想法被听到。</div>
+    </div>
+    <div class="example">
+      <div class="en">"She was <strong>assertive</strong> but polite when asking for a raise."</div>
+      <div class="zh">她在要求加薪时态度坚定但礼貌得体。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong> <em>assert</em>（主张，断言）+ <em>-ive</em>（形容词后缀）→ 善于"主张"自己的人 = 果断自信的。职场黄金平衡：比 aggressive（攻击性）温和，比 passive（被动）积极。</span>
+    </div>
+  </div>
+
+  <!-- ⑤ nuance -->
+  <div class="card" id="card-4">
+    <span class="card-number">05</span>
+    <div class="word-row">
+      <span class="word">nuance</span>
+      <span class="phonetic">US /ˈnjuːɑːns/ · GB /ˈnjuːɑːns/</span>
+    </div>
+    <span class="pos-tag">n.</span>
+    <div class="meaning">细微差别；微妙之处 — 指语言、情感、意义等方面难以察觉却很重要的细小区别</div>
+    <div class="speak-btns">
+      <button class="speak-btn us" onclick="speak('nuance','us')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇺🇸 美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('nuance','gb')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        🇬🇧 英式
+      </button>
+    </div>
+    <div class="examples-title">例句</div>
+    <div class="example">
+      <div class="en">"A skilled translator must understand the <strong>nuances</strong> of both languages."</div>
+      <div class="zh">优秀的翻译必须理解两种语言的细微差别。</div>
+    </div>
+    <div class="example">
+      <div class="en">"There are important <strong>nuances</strong> in her proposal that we shouldn't overlook."</div>
+      <div class="zh">她的提案中有一些重要的微妙之处，我们不应忽视。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong> 来自法语，与"云"（nue）同根，如云彩般细腻渐变——颜色、意义、情感的微妙渐变就是 nuance。常见搭配：<em>subtle nuance / cultural nuance / nuanced understanding</em>。</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 2026 年 5 月 25 日 &nbsp;|&nbsp; 第 9 期 &nbsp;|&nbsp; Daily English Vocabulary</p>
+  <p style="margin-top:0.4rem;">今日主题：职场核心软技能 · Core Workplace Soft Skills</p>
+  <p style="margin-top:0.8rem;"><a href="index.html">← 返回首页</a></p>
+</footer>
+
+<script>
+  // ── Voice cache ──
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  loadVoices();
+  if (window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  function speak(word, accent) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音功能，请使用 Chrome/Edge。');
+      return;
+    }
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = accent === 'us' ? 'en-US' : 'en-GB';
+    utter.rate = 0.85;
+    utter.pitch = 1;
+
+    // Try to pick a matching voice
+    const match = voices.find(v =>
+      accent === 'us'
+        ? v.lang === 'en-US' || v.lang.startsWith('en-US')
+        : v.lang === 'en-GB' || v.lang.startsWith('en-GB')
+    );
+    if (match) utter.voice = match;
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+  }
+
+  // ── Progress dot scroll sync ──
+  const cardEls = Array.from(document.querySelectorAll('.card'));
+  const dotEls  = Array.from(document.querySelectorAll('.dot'));
+
+  dotEls.forEach(d => {
+    d.addEventListener('click', () => {
+      const i = parseInt(d.dataset.i, 10);
+      cardEls[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = cardEls.indexOf(e.target);
+        dotEls.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+
+  cardEls.forEach(c => obs.observe(c));
+</script>
+</body>
+</html>
