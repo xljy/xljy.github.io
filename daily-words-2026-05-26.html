@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语单词 — 2026年5月26日</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d2e;
+      --card-border: #2a2d3e;
+      --accent: #7c6af7;
+      --accent2: #56cfe1;
+      --text: #e2e8f0;
+      --sub: #94a3b8;
+      --tag-bg: #252840;
+      --btn-us: #7c6af7;
+      --btn-uk: #56cfe1;
+      --shadow: 0 4px 24px rgba(0,0,0,0.45);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+      min-height: 100vh;
+      padding: 32px 16px 60px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    .cards {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px 28px 22px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(124,106,247,0.18);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .word-info { flex: 1; min-width: 200px; }
+    .word {
+      font-size: 30px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .phonetic {
+      display: flex;
+      gap: 18px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+    .ph-item { display: flex; align-items: center; gap: 5px; }
+    .ph-label {
+      font-size: 12px;
+      color: var(--sub);
+      background: var(--tag-bg);
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+    .ph-text { font-size: 15px; color: var(--accent2); font-family: serif; }
+
+    .btns { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+    .speak-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .speak-btn:active { transform: scale(0.95); }
+    .btn-us { background: var(--btn-us); color: #fff; }
+    .btn-uk { background: transparent; color: var(--btn-uk); border: 1.5px solid var(--btn-uk); }
+    .speak-btn:hover { opacity: 0.85; }
+    .speak-btn svg { flex-shrink: 0; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--card-border);
+      margin: 14px 0;
+    }
+
+    .pos-badge {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .meaning {
+      font-size: 17px;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .meaning em { color: var(--accent2); font-style: normal; font-weight: 600; }
+
+    .examples { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+    .ex-item {
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+    }
+    .ex-en { font-size: 14.5px; color: #c7d2fe; margin-bottom: 4px; line-height: 1.55; }
+    .ex-zh { font-size: 13px; color: var(--sub); line-height: 1.5; }
+
+    .tip-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(124,106,247,0.10);
+      border: 1px solid rgba(124,106,247,0.22);
+      border-radius: 10px;
+      padding: 11px 14px;
+    }
+    .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .tip-text { font-size: 13.5px; color: #c4b5fd; line-height: 1.6; }
+
+    .card-num {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 13px;
+      color: var(--sub);
+      font-weight: 600;
+    }
+    .card { position: relative; }
+
+    footer {
+      text-align: center;
+      margin-top: 52px;
+      color: var(--sub);
+      font-size: 13px;
+    }
+    footer .date { font-size: 15px; color: var(--text); font-weight: 600; margin-bottom: 4px; }
+    footer .issue { color: var(--accent2); }
+
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 32px 0 8px;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      transition: background 0.3s;
+    }
+    .dot.active { background: var(--accent); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">📚 DAILY WORDS</div>
+  <h1>每日英语单词</h1>
+  <p>2026年5月26日 · 第 10 期 · 今日主题：个人成长与职场表达</p>
+</header>
+
+<div class="cards" id="cards">
+
+  <!-- Word 1: discipline -->
+  <div class="card">
+    <span class="card-num">01 / 05</span>
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word">discipline</div>
+        <div class="phonetic">
+          <div class="ph-item">
+            <span class="ph-label">美</span>
+            <span class="ph-text">/ˈdɪs.ə.plɪn/</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-label">英</span>
+            <span class="ph-text">/ˈdɪs.ɪ.plɪn/</span>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <button class="speak-btn btn-us" onclick="speak('discipline','us')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          美式
+        </button>
+        <button class="speak-btn btn-uk" onclick="speak('discipline','uk')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          英式
+        </button>
+      </div>
+    </div>
+    <hr class="divider" />
+    <div class="pos-badge">n. / v.</div>
+    <div class="meaning">自律；纪律；训练 &nbsp;|&nbsp; <em>discipline oneself</em> 自我约束</div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en">Success comes from consistent <em>discipline</em>, not occasional bursts of motivation.</div>
+        <div class="ex-zh">成功来自持续的自律，而非偶尔的一时冲劲。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">It takes <em>discipline</em> to finish a project on time without procrastinating.</div>
+        <div class="ex-zh">按时完成项目、不拖延需要很强的自律能力。</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">联想：<strong>disciple</strong>（门徒）需要 <strong>discipline</strong>（纪律）修炼自己。两者词根相同，都来自拉丁语 discere（学习）。</div>
+    </div>
+  </div>
+
+  <!-- Word 2: perspective -->
+  <div class="card">
+    <span class="card-num">02 / 05</span>
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word">perspective</div>
+        <div class="phonetic">
+          <div class="ph-item">
+            <span class="ph-label">美</span>
+            <span class="ph-text">/pərˈspek.tɪv/</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-label">英</span>
+            <span class="ph-text">/pəˈspek.tɪv/</span>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <button class="speak-btn btn-us" onclick="speak('perspective','us')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          美式
+        </button>
+        <button class="speak-btn btn-uk" onclick="speak('perspective','uk')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          英式
+        </button>
+      </div>
+    </div>
+    <hr class="divider" />
+    <div class="pos-badge">n.</div>
+    <div class="meaning">视角；观点；看法 &nbsp;|&nbsp; <em>from my perspective</em> 从我的角度来看</div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en">Try to see the issue from the customer's <em>perspective</em> before responding.</div>
+        <div class="ex-zh">在回复之前，试着从客户的角度来看待这个问题。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Traveling abroad gives you a fresh <em>perspective</em> on your own culture.</div>
+        <div class="ex-zh">出国旅行让你以全新视角重新审视自己的文化。</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">词根 <strong>spect</strong> = look（看），<strong>per</strong> = through（穿过）。perspective = 透过某个方向去"看"——视角、观点。联想"透视画法"即透过某个视点看到的景象。</div>
+    </div>
+  </div>
+
+  <!-- Word 3: attentive -->
+  <div class="card">
+    <span class="card-num">03 / 05</span>
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word">attentive</div>
+        <div class="phonetic">
+          <div class="ph-item">
+            <span class="ph-label">美</span>
+            <span class="ph-text">/əˈten.tɪv/</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-label">英</span>
+            <span class="ph-text">/əˈten.tɪv/</span>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <button class="speak-btn btn-us" onclick="speak('attentive','us')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          美式
+        </button>
+        <button class="speak-btn btn-uk" onclick="speak('attentive','uk')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          英式
+        </button>
+      </div>
+    </div>
+    <hr class="divider" />
+    <div class="pos-badge">adj.</div>
+    <div class="meaning">专注的；细心的；体贴的 &nbsp;|&nbsp; <em>be attentive to</em> 留意……；关注……</div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en">Be <em>attentive</em> during the meeting — important decisions will be made today.</div>
+        <div class="ex-zh">会议期间要专注，今天将做出重要决定。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Good leaders are <em>attentive</em> to the needs of their team members.</div>
+        <div class="ex-zh">优秀的领导者会细心关注团队成员的需求。</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">来自 <strong>attention</strong>（注意力）+ <strong>-ive</strong>（形容词后缀）。记住：attitude（态度）→ attention（注意）→ attentive（专注的），三个词都以 att- 开头，递进关系清晰。</div>
+    </div>
+  </div>
+
+  <!-- Word 4: eloquent -->
+  <div class="card">
+    <span class="card-num">04 / 05</span>
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word">eloquent</div>
+        <div class="phonetic">
+          <div class="ph-item">
+            <span class="ph-label">美</span>
+            <span class="ph-text">/ˈel.ə.kwənt/</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-label">英</span>
+            <span class="ph-text">/ˈel.ə.kwənt/</span>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <button class="speak-btn btn-us" onclick="speak('eloquent','us')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          美式
+        </button>
+        <button class="speak-btn btn-uk" onclick="speak('eloquent','uk')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          英式
+        </button>
+      </div>
+    </div>
+    <hr class="divider" />
+    <div class="pos-badge">adj.</div>
+    <div class="meaning">口才好的；有说服力的；雄辩的 &nbsp;|&nbsp; <em>an eloquent speaker</em> 出色的演讲者</div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en">She gave an <em>eloquent</em> speech that moved everyone in the room.</div>
+        <div class="ex-zh">她发表了一篇感人至深、言辞有力的演讲，打动了在场所有人。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">His <em>eloquent</em> presentation convinced the board to approve the budget.</div>
+        <div class="ex-zh">他极具说服力的汇报说服了董事会批准了预算。</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">词根 <strong>loqu/locu</strong> = speak（说话），前缀 <strong>e</strong> = out（向外）。eloquent = 把话说出来、说得很好。同根词：loquacious（话多的）、colloquial（口语的）。</div>
+    </div>
+  </div>
+
+  <!-- Word 5: sustain -->
+  <div class="card">
+    <span class="card-num">05 / 05</span>
+    <div class="card-top">
+      <div class="word-info">
+        <div class="word">sustain</div>
+        <div class="phonetic">
+          <div class="ph-item">
+            <span class="ph-label">美</span>
+            <span class="ph-text">/səˈsteɪn/</span>
+          </div>
+          <div class="ph-item">
+            <span class="ph-label">英</span>
+            <span class="ph-text">/səˈsteɪn/</span>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <button class="speak-btn btn-us" onclick="speak('sustain','us')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          美式
+        </button>
+        <button class="speak-btn btn-uk" onclick="speak('sustain','uk')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          英式
+        </button>
+      </div>
+    </div>
+    <hr class="divider" />
+    <div class="pos-badge">v.</div>
+    <div class="meaning">维持；支撑；持续 &nbsp;|&nbsp; <em>sustain growth</em> 维持增长；<em>sustain effort</em> 持之以恒</div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en">It's hard to <em>sustain</em> high energy levels without proper sleep and nutrition.</div>
+        <div class="ex-zh">如果没有充足的睡眠和营养，很难维持高水平的精力。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The company aims to <em>sustain</em> its growth rate for the next five years.</div>
+        <div class="ex-zh">该公司的目标是在未来五年内维持其增长速度。</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text">词根 <strong>tain/ten</strong> = hold（持有），前缀 <strong>sus</strong> = under（在下面支撑）。sustain = 在下面撑住 → 维持、支撑。同根词：maintain（维持）、contain（包含）、obtain（获得）。</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="progress-dots">
+  <div class="dot active"></div>
+  <div class="dot active"></div>
+  <div class="dot active"></div>
+  <div class="dot active"></div>
+  <div class="dot active"></div>
+</div>
+
+<footer>
+  <div class="date">2026年5月26日 · Tuesday</div>
+  <div class="issue">第 <strong>10</strong> 期 &nbsp;·&nbsp; 今日主题：个人成长与职场表达</div>
+  <div style="margin-top:10px; color:#475569; font-size:12px;">
+    discipline · perspective · attentive · eloquent · sustain
+  </div>
+</footer>
+
+<script>
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+  loadVoices();
+
+  function speak(word, accent) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音合成功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = accent === 'us' ? 'en-US' : 'en-GB';
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+    const lang = accent === 'us' ? 'en-US' : 'en-GB';
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith('en-'));
+    if (matched) utter.voice = matched;
+
+    window.speechSynthesis.speak(utter);
+  }
+</script>
+
+</body>
+</html>
