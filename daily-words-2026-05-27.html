@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语单词 — 2026-05-27</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d2e;
+      --card-border: #2a2d45;
+      --accent: #6c8eff;
+      --accent2: #a78bfa;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --tag-bg: #1e2640;
+      --btn-us: #1e40af;
+      --btn-gb: #5b21b6;
+      --btn-hover-us: #2563eb;
+      --btn-hover-gb: #7c3aed;
+      --shadow: 0 4px 24px rgba(0,0,0,0.45);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      min-height: 100vh;
+      padding: 0 0 60px;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      padding: 52px 20px 36px;
+      background: linear-gradient(160deg, #141728 0%, #0f1117 100%);
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+    header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, #a5b4fc, #6c8eff, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    header .theme-tag {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--tag-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: .82rem;
+      color: var(--accent2);
+    }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px 26px 22px;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(108,142,255,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 36px rgba(108,142,255,.18);
+      border-color: rgba(108,142,255,.4);
+    }
+
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--card-border);
+      letter-spacing: .1em;
+    }
+
+    .word {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+      letter-spacing: .01em;
+    }
+
+    .phonetic-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .phonetic {
+      font-size: .9rem;
+      color: var(--accent);
+      font-family: 'Courier New', monospace;
+      background: rgba(108,142,255,.12);
+      padding: 2px 10px;
+      border-radius: 8px;
+    }
+
+    .pos {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent2);
+      background: rgba(167,139,250,.12);
+      padding: 2px 10px;
+      border-radius: 8px;
+    }
+
+    .meaning {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    /* Speak buttons */
+    .speak-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .speak-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .78rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: background .18s, transform .1s;
+      letter-spacing: .04em;
+    }
+    .speak-btn.us {
+      background: var(--btn-us);
+      color: #bfdbfe;
+    }
+    .speak-btn.us:hover { background: var(--btn-hover-us); transform: scale(1.04); }
+    .speak-btn.gb {
+      background: var(--btn-gb);
+      color: #ddd6fe;
+    }
+    .speak-btn.gb:hover { background: var(--btn-hover-gb); transform: scale(1.04); }
+    .speak-btn svg { width: 14px; height: 14px; fill: currentColor; }
+    .speak-btn:active { transform: scale(.97); }
+
+    /* Examples */
+    .examples-label {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .example {
+      background: rgba(255,255,255,.04);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+    }
+    .example .en {
+      font-size: .9rem;
+      color: #c7d2fe;
+      line-height: 1.5;
+      margin-bottom: 3px;
+    }
+    .example .zh {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Memory tip */
+    .tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(167,139,250,.12), rgba(108,142,255,.08));
+      border: 1px solid rgba(167,139,250,.2);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 14px;
+    }
+    .tip-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .tip-text { font-size: .82rem; color: #c4b5fd; line-height: 1.6; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--muted);
+      font-size: .82rem;
+      padding: 0 20px;
+    }
+    footer .series { color: var(--accent2); font-weight: 700; }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    footer a:hover { opacity: .7; }
+
+    /* dot nav */
+    .dot-nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 30px 0 0;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      transition: background .2s;
+      cursor: default;
+    }
+    .dot.active { background: var(--accent); }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+      .word { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Day 11 · May 27, 2026</div>
+  <h1>每日英语单词</h1>
+  <p>Daily English Vocabulary · 5 Words a Day</p>
+  <div class="theme-tag">
+    <span>⏱</span>
+    <span>今日主题：时间管理与效率提升</span>
+  </div>
+</header>
+
+<div class="dot-nav" id="dotNav">
+  <div class="dot active" title="allocate"></div>
+  <div class="dot" title="punctual"></div>
+  <div class="dot" title="streamline"></div>
+  <div class="dot" title="productive"></div>
+  <div class="dot" title="calibrate"></div>
+</div>
+
+<br />
+
+<div class="grid">
+
+  <!-- 1. allocate -->
+  <div class="card">
+    <span class="card-num">01 / 05</span>
+    <div class="word">allocate</div>
+    <div class="phonetic-row">
+      <span class="phonetic">/ ˈæl.ə.keɪt /</span>
+      <span class="pos">v. 动词</span>
+    </div>
+    <div class="meaning">分配；拨出（时间、资源、预算等）</div>
+    <div class="speak-row">
+      <button class="speak-btn us" onclick="speak('allocate','us')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('allocate','gb')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
+        英式
+      </button>
+    </div>
+    <div class="examples-label">例句</div>
+    <div class="example">
+      <div class="en">You need to allocate enough time for each task on your to-do list.</div>
+      <div class="zh">你需要为待办事项清单上的每项任务分配足够的时间。</div>
+    </div>
+    <div class="example">
+      <div class="en">The manager allocated a larger budget to the marketing team.</div>
+      <div class="zh">经理给市场营销团队分配了更多预算。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong>al-（加强）+ locate（定位）→ 把资源"定位"给某处 = 分配。想象你在地图上把资源"定点投放"到各部门。</span>
+    </div>
+  </div>
+
+  <!-- 2. punctual -->
+  <div class="card">
+    <span class="card-num">02 / 05</span>
+    <div class="word">punctual</div>
+    <div class="phonetic-row">
+      <span class="phonetic">/ ˈpʌŋk.tʃu.əl /</span>
+      <span class="pos">adj. 形容词</span>
+    </div>
+    <div class="meaning">守时的；准时的</div>
+    <div class="speak-row">
+      <button class="speak-btn us" onclick="speak('punctual','us')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('punctual','gb')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
+        英式
+      </button>
+    </div>
+    <div class="examples-label">例句</div>
+    <div class="example">
+      <div class="en">Being punctual shows respect for other people's time.</div>
+      <div class="zh">守时表示你尊重他人的时间。</div>
+    </div>
+    <div class="example">
+      <div class="en">She is always punctual for meetings, never a minute late.</div>
+      <div class="zh">她开会从不迟到，一分钟都不差。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong>punct- 来自拉丁语"点"（同 punctuation 标点），守时就是"卡准那个时间点"。联想：手表指针精准对准那个"点"。</span>
+    </div>
+  </div>
+
+  <!-- 3. streamline -->
+  <div class="card">
+    <span class="card-num">03 / 05</span>
+    <div class="word">streamline</div>
+    <div class="phonetic-row">
+      <span class="phonetic">/ ˈstriːm.laɪn /</span>
+      <span class="pos">v. 动词 / adj. 形容词</span>
+    </div>
+    <div class="meaning">精简；使流线型；提高效率（消除繁琐步骤）</div>
+    <div class="speak-row">
+      <button class="speak-btn us" onclick="speak('streamline','us')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('streamline','gb')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
+        英式
+      </button>
+    </div>
+    <div class="examples-label">例句</div>
+    <div class="example">
+      <div class="en">We need to streamline our approval process to save time.</div>
+      <div class="zh">我们需要精简审批流程以节省时间。</div>
+    </div>
+    <div class="example">
+      <div class="en">The new software helps streamline daily operations for the whole team.</div>
+      <div class="zh">新软件帮助整个团队精简了日常运营流程。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong>stream（溪流）+ line（线）→ 像溪水一样顺畅流动，没有障碍 = 精简、流线化。想象去掉阻碍让工作像水流一样畅通无阻。</span>
+    </div>
+  </div>
+
+  <!-- 4. productive -->
+  <div class="card">
+    <span class="card-num">04 / 05</span>
+    <div class="word">productive</div>
+    <div class="phonetic-row">
+      <span class="phonetic">/ prəˈdʌk.tɪv /</span>
+      <span class="pos">adj. 形容词</span>
+    </div>
+    <div class="meaning">高效的；富有成效的；多产的</div>
+    <div class="speak-row">
+      <button class="speak-btn us" onclick="speak('productive','us')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('productive','gb')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
+        英式
+      </button>
+    </div>
+    <div class="examples-label">例句</div>
+    <div class="example">
+      <div class="en">I find I am most productive in the early morning before any meetings.</div>
+      <div class="zh">我发现在任何会议开始之前的清晨，我的效率最高。</div>
+    </div>
+    <div class="example">
+      <div class="en">It was a very productive meeting — we resolved three major issues.</div>
+      <div class="zh">那是一次非常高效的会议，我们解决了三个重要问题。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong>produce（生产）+ -tive → 能"持续生产"成果的 = 高效多产的。反义词 unproductive（低效的）也常用于职场表达，一起记效果更好！</span>
+    </div>
+  </div>
+
+  <!-- 5. calibrate -->
+  <div class="card">
+    <span class="card-num">05 / 05</span>
+    <div class="word">calibrate</div>
+    <div class="phonetic-row">
+      <span class="phonetic">/ ˈkæl.ɪ.breɪt /</span>
+      <span class="pos">v. 动词</span>
+    </div>
+    <div class="meaning">校准；调校；（对工作节奏/期望）进行精确调整</div>
+    <div class="speak-row">
+      <button class="speak-btn us" onclick="speak('calibrate','us')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        美式
+      </button>
+      <button class="speak-btn gb" onclick="speak('calibrate','gb')">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
+        英式
+      </button>
+    </div>
+    <div class="examples-label">例句</div>
+    <div class="example">
+      <div class="en">We need to calibrate our expectations to match the project timeline.</div>
+      <div class="zh">我们需要根据项目时间线调校我们的预期。</div>
+    </div>
+    <div class="example">
+      <div class="en">After the feedback, she calibrated her approach to better suit the team.</div>
+      <div class="zh">在收到反馈后，她调整了自己的方式以更好地适应团队。</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text"><strong>记忆提示：</strong>caliber（口径/能力标准）+ -ate → 像调枪口径一样精确调整 = 校准。职场中常说"calibrate expectations"（校准预期），非常地道！</span>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+<footer>
+  <p>
+    <span class="series">第 11 期</span> &nbsp;·&nbsp; 2026年5月27日 &nbsp;·&nbsp; 主题：时间管理与效率提升
+  </p>
+  <p style="margin-top:8px;">
+    <a href="https://xljy.github.io" target="_blank">← 返回主页</a>
+  </p>
+</footer>
+
+<script>
+  /* ── Web Speech API ── */
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+  loadVoices();
+
+  function speak(word, accent) {
+    if (!('speechSynthesis' in window)) {
+      alert('您的浏览器不支持语音功能，请使用 Chrome 或 Edge。');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utt = new SpeechSynthesisUtterance(word);
+    const lang = accent === 'us' ? 'en-US' : 'en-GB';
+    utt.lang = lang;
+    utt.rate = 0.88;
+    utt.pitch = 1;
+
+    if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+    const match = voices.find(v => v.lang === lang) ||
+                  voices.find(v => v.lang.startsWith('en'));
+    if (match) utt.voice = match;
+
+    window.speechSynthesis.speak(utt);
+  }
+
+  /* ── Active dot on scroll ── */
+  const cards = document.querySelectorAll('.card');
+  const dots  = document.querySelectorAll('.dot');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = [...cards].indexOf(e.target);
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[i]) dots[i].classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  cards.forEach(c => obs.observe(c));
+</script>
+
+</body>
+</html>
