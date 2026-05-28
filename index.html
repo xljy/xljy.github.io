@@ -1,528 +1,510 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>每日英语单词 — 2026-05-27</title>
-  <style>
-    :root {
-      --bg: #0f1117;
-      --card: #1a1d2e;
-      --card-border: #2a2d45;
-      --accent: #6c8eff;
-      --accent2: #a78bfa;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --tag-bg: #1e2640;
-      --btn-us: #1e40af;
-      --btn-gb: #5b21b6;
-      --btn-hover-us: #2563eb;
-      --btn-hover-gb: #7c3aed;
-      --shadow: 0 4px 24px rgba(0,0,0,0.45);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      min-height: 100vh;
-      padding: 0 0 60px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日英语单词 · 2026年5月28日 · 第12期</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ── Header ── */
-    header {
-      text-align: center;
-      padding: 52px 20px 36px;
-      background: linear-gradient(160deg, #141728 0%, #0f1117 100%);
-    }
-    header .badge {
-      display: inline-block;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: #fff;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 18px;
-      text-transform: uppercase;
-    }
-    header h1 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 800;
-      background: linear-gradient(90deg, #a5b4fc, #6c8eff, #c4b5fd);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-    header p {
-      color: var(--muted);
-      font-size: .95rem;
-    }
-    header .theme-tag {
-      margin-top: 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--tag-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 5px 16px;
-      font-size: .82rem;
-      color: var(--accent2);
-    }
+  body {
+    background: #0f1117;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+  }
 
-    /* ── Grid ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 22px;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    position: relative;
+  }
 
-    /* ── Card ── */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 28px 26px 22px;
-      box-shadow: var(--shadow);
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(108,142,255,.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 36px rgba(108,142,255,.18);
-      border-color: rgba(108,142,255,.4);
-    }
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    font-size: 13px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
 
-    .card-num {
-      position: absolute;
-      top: 16px; right: 18px;
-      font-size: .72rem;
-      font-weight: 700;
-      color: var(--card-border);
-      letter-spacing: .1em;
-    }
+  .header h1 {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
 
-    .word {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 4px;
-      letter-spacing: .01em;
-    }
+  .header p {
+    color: #64748b;
+    font-size: 14px;
+  }
 
-    .phonetic-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    .phonetic {
-      font-size: .9rem;
-      color: var(--accent);
-      font-family: 'Courier New', monospace;
-      background: rgba(108,142,255,.12);
-      padding: 2px 10px;
-      border-radius: 8px;
-    }
+  .theme-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #a78bfa;
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-top: 12px;
+  }
 
-    .pos {
-      display: inline-block;
-      font-size: .72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--accent2);
-      background: rgba(167,139,250,.12);
-      padding: 2px 10px;
-      border-radius: 8px;
-    }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 10px;
+  }
 
-    .meaning {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 14px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--card-border);
-    }
+  .card {
+    background: linear-gradient(145deg, #1a1d2e, #1e2035);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    padding: 26px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-    /* Speak buttons */
-    .speak-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .speak-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: .78rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      padding: 6px 14px;
-      cursor: pointer;
-      transition: background .18s, transform .1s;
-      letter-spacing: .04em;
-    }
-    .speak-btn.us {
-      background: var(--btn-us);
-      color: #bfdbfe;
-    }
-    .speak-btn.us:hover { background: var(--btn-hover-us); transform: scale(1.04); }
-    .speak-btn.gb {
-      background: var(--btn-gb);
-      color: #ddd6fe;
-    }
-    .speak-btn.gb:hover { background: var(--btn-hover-gb); transform: scale(1.04); }
-    .speak-btn svg { width: 14px; height: 14px; fill: currentColor; }
-    .speak-btn:active { transform: scale(.97); }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--card-color, linear-gradient(90deg, #6366f1, #8b5cf6));
+  }
 
-    /* Examples */
-    .examples-label {
-      font-size: .72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .example {
-      background: rgba(255,255,255,.04);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-      padding: 8px 12px;
-      margin-bottom: 8px;
-    }
-    .example .en {
-      font-size: .9rem;
-      color: #c7d2fe;
-      line-height: 1.5;
-      margin-bottom: 3px;
-    }
-    .example .zh {
-      font-size: .82rem;
-      color: var(--muted);
-      line-height: 1.4;
-    }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
 
-    /* Memory tip */
-    .tip {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      background: linear-gradient(135deg, rgba(167,139,250,.12), rgba(108,142,255,.08));
-      border: 1px solid rgba(167,139,250,.2);
-      border-radius: 10px;
-      padding: 10px 14px;
-      margin-top: 14px;
-    }
-    .tip-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-    .tip-text { font-size: .82rem; color: #c4b5fd; line-height: 1.6; }
+  .card-num {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    font-size: 42px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
 
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      color: var(--muted);
-      font-size: .82rem;
-      padding: 0 20px;
-    }
-    footer .series { color: var(--accent2); font-weight: 700; }
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: opacity .15s;
-    }
-    footer a:hover { opacity: .7; }
+  .word-main {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
 
-    /* dot nav */
-    .dot-nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin: 30px 0 0;
-    }
-    .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--card-border);
-      transition: background .2s;
-      cursor: default;
-    }
-    .dot.active { background: var(--accent); }
+  .word {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f1f5f9;
+    letter-spacing: -0.5px;
+  }
 
-    @media (max-width: 600px) {
-      .grid { grid-template-columns: 1fr; }
-      .word { font-size: 1.6rem; }
-    }
-  </style>
+  .pos-badge {
+    background: rgba(255,255,255,0.08);
+    color: #94a3b8;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  .phonetics {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0 14px;
+  }
+
+  .phonetic-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #94a3b8;
+    font-size: 13px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .phonetic-btn:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: #6366f1;
+    color: #a78bfa;
+    transform: scale(1.05);
+  }
+
+  .phonetic-btn.speaking {
+    background: rgba(99, 102, 241, 0.35);
+    border-color: #818cf8;
+    color: #c4b5fd;
+  }
+
+  .phonetic-btn .flag { font-size: 15px; }
+
+  .meaning {
+    font-size: 17px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin: 14px 0;
+  }
+
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #475569;
+    margin-bottom: 6px;
+  }
+
+  .example-en {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+
+  .example-zh {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .tip-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(251, 191, 36, 0.07);
+    border-left: 3px solid #f59e0b;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 12px;
+    margin-top: 6px;
+  }
+
+  .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .tip-text {
+    font-size: 13px;
+    color: #fbbf24;
+    line-height: 1.6;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #334155;
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .footer .issue {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    color: #6366f1;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .progress-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 20px 0;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .dot.active { background: #6366f1; transform: scale(1.3); }
+  .dot.done { background: #34d399; }
+
+  @media (max-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+    .header h1 { font-size: 24px; }
+  }
+</style>
 </head>
 <body>
 
-<header>
-  <div class="badge">Day 11 · May 27, 2026</div>
-  <h1>每日英语单词</h1>
-  <p>Daily English Vocabulary · 5 Words a Day</p>
-  <div class="theme-tag">
-    <span>⏱</span>
-    <span>今日主题：时间管理与效率提升</span>
-  </div>
-</header>
-
-<div class="dot-nav" id="dotNav">
-  <div class="dot active" title="allocate"></div>
-  <div class="dot" title="punctual"></div>
-  <div class="dot" title="streamline"></div>
-  <div class="dot" title="productive"></div>
-  <div class="dot" title="calibrate"></div>
+<div class="header">
+  <div class="header-badge">📚 Daily Words · Issue 12</div>
+  <h1>每日六词 · 职场影响力</h1>
+  <p>2026年5月28日 · Workplace Influence & Persuasion</p>
+  <div class="theme-tag">💼 职场影响力与说服表达</div>
 </div>
 
-<br />
+<div class="progress-dots" id="progressDots"></div>
 
-<div class="grid">
+<div class="cards-grid" id="cardsGrid">
 
-  <!-- 1. allocate -->
-  <div class="card">
-    <span class="card-num">01 / 05</span>
-    <div class="word">allocate</div>
-    <div class="phonetic-row">
-      <span class="phonetic">/ ˈæl.ə.keɪt /</span>
-      <span class="pos">v. 动词</span>
+  <!-- Card 1: convince -->
+  <div class="card" style="--card-color: linear-gradient(90deg, #6366f1, #8b5cf6);">
+    <div class="card-num">01</div>
+    <div class="word-main">
+      <span class="word">convince</span>
+      <span class="pos-badge">v. 动词</span>
     </div>
-    <div class="meaning">分配；拨出（时间、资源、预算等）</div>
-    <div class="speak-row">
-      <button class="speak-btn us" onclick="speak('allocate','us')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-        美式
+    <div class="phonetics">
+      <button class="phonetic-btn" onclick="speak('convince','us',this)">
+        <span class="flag">🇺🇸</span> <span>/kənˈvɪns/</span> <span>▶</span>
       </button>
-      <button class="speak-btn gb" onclick="speak('allocate','gb')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
-        英式
+      <button class="phonetic-btn" onclick="speak('convince','gb',this)">
+        <span class="flag">🇬🇧</span> <span>/kənˈvɪns/</span> <span>▶</span>
       </button>
     </div>
-    <div class="examples-label">例句</div>
-    <div class="example">
-      <div class="en">You need to allocate enough time for each task on your to-do list.</div>
-      <div class="zh">你需要为待办事项清单上的每项任务分配足够的时间。</div>
-    </div>
-    <div class="example">
-      <div class="en">The manager allocated a larger budget to the marketing team.</div>
-      <div class="zh">经理给市场营销团队分配了更多预算。</div>
-    </div>
-    <div class="tip">
+    <div class="meaning">说服；使信服；让某人确信</div>
+    <hr class="divider">
+    <div class="section-label">例句</div>
+    <div class="example-en">"She convinced the team to adopt the new workflow."</div>
+    <div class="example-zh">她说服了团队采用新的工作流程。</div>
+    <div class="tip-box">
       <span class="tip-icon">💡</span>
-      <span class="tip-text"><strong>记忆提示：</strong>al-（加强）+ locate（定位）→ 把资源"定位"给某处 = 分配。想象你在地图上把资源"定点投放"到各部门。</span>
+      <span class="tip-text">记忆提示："con-"（一起）+ "vince"（征服）→ 一起征服对方的想法 = 说服。常见搭配：convince sb. to do / convince sb. of sth.</span>
     </div>
   </div>
 
-  <!-- 2. punctual -->
-  <div class="card">
-    <span class="card-num">02 / 05</span>
-    <div class="word">punctual</div>
-    <div class="phonetic-row">
-      <span class="phonetic">/ ˈpʌŋk.tʃu.əl /</span>
-      <span class="pos">adj. 形容词</span>
+  <!-- Card 2: credibility -->
+  <div class="card" style="--card-color: linear-gradient(90deg, #0ea5e9, #38bdf8);">
+    <div class="card-num">02</div>
+    <div class="word-main">
+      <span class="word">credibility</span>
+      <span class="pos-badge">n. 名词</span>
     </div>
-    <div class="meaning">守时的；准时的</div>
-    <div class="speak-row">
-      <button class="speak-btn us" onclick="speak('punctual','us')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-        美式
+    <div class="phonetics">
+      <button class="phonetic-btn" onclick="speak('credibility','us',this)">
+        <span class="flag">🇺🇸</span> <span>/ˌkredəˈbɪlɪti/</span> <span>▶</span>
       </button>
-      <button class="speak-btn gb" onclick="speak('punctual','gb')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
-        英式
+      <button class="phonetic-btn" onclick="speak('credibility','gb',this)">
+        <span class="flag">🇬🇧</span> <span>/ˌkredɪˈbɪlɪti/</span> <span>▶</span>
       </button>
     </div>
-    <div class="examples-label">例句</div>
-    <div class="example">
-      <div class="en">Being punctual shows respect for other people's time.</div>
-      <div class="zh">守时表示你尊重他人的时间。</div>
-    </div>
-    <div class="example">
-      <div class="en">She is always punctual for meetings, never a minute late.</div>
-      <div class="zh">她开会从不迟到，一分钟都不差。</div>
-    </div>
-    <div class="tip">
+    <div class="meaning">可信度；信誉；公信力</div>
+    <hr class="divider">
+    <div class="section-label">例句</div>
+    <div class="example-en">"Building credibility takes time but losing it takes only a moment."</div>
+    <div class="example-zh">建立信誉需要时间，但失去信誉只需一瞬间。</div>
+    <div class="tip-box">
       <span class="tip-icon">💡</span>
-      <span class="tip-text"><strong>记忆提示：</strong>punct- 来自拉丁语"点"（同 punctuation 标点），守时就是"卡准那个时间点"。联想：手表指针精准对准那个"点"。</span>
+      <span class="tip-text">记忆提示：来自 "credible"（可信的）+ "-ity"（名词后缀）。职场中"build credibility"是高频表达，意为建立专业威信。</span>
     </div>
   </div>
 
-  <!-- 3. streamline -->
-  <div class="card">
-    <span class="card-num">03 / 05</span>
-    <div class="word">streamline</div>
-    <div class="phonetic-row">
-      <span class="phonetic">/ ˈstriːm.laɪn /</span>
-      <span class="pos">v. 动词 / adj. 形容词</span>
+  <!-- Card 3: persuade -->
+  <div class="card" style="--card-color: linear-gradient(90deg, #10b981, #34d399);">
+    <div class="card-num">03</div>
+    <div class="word-main">
+      <span class="word">persuade</span>
+      <span class="pos-badge">v. 动词</span>
     </div>
-    <div class="meaning">精简；使流线型；提高效率（消除繁琐步骤）</div>
-    <div class="speak-row">
-      <button class="speak-btn us" onclick="speak('streamline','us')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-        美式
+    <div class="phonetics">
+      <button class="phonetic-btn" onclick="speak('persuade','us',this)">
+        <span class="flag">🇺🇸</span> <span>/pərˈsweɪd/</span> <span>▶</span>
       </button>
-      <button class="speak-btn gb" onclick="speak('streamline','gb')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
-        英式
+      <button class="phonetic-btn" onclick="speak('persuade','gb',this)">
+        <span class="flag">🇬🇧</span> <span>/pəˈsweɪd/</span> <span>▶</span>
       </button>
     </div>
-    <div class="examples-label">例句</div>
-    <div class="example">
-      <div class="en">We need to streamline our approval process to save time.</div>
-      <div class="zh">我们需要精简审批流程以节省时间。</div>
-    </div>
-    <div class="example">
-      <div class="en">The new software helps streamline daily operations for the whole team.</div>
-      <div class="zh">新软件帮助整个团队精简了日常运营流程。</div>
-    </div>
-    <div class="tip">
+    <div class="meaning">劝说；说服（通过理由或论据）</div>
+    <hr class="divider">
+    <div class="section-label">例句</div>
+    <div class="example-en">"He persuaded his manager to extend the project deadline."</div>
+    <div class="example-zh">他说服了经理延长项目截止日期。</div>
+    <div class="tip-box">
       <span class="tip-icon">💡</span>
-      <span class="tip-text"><strong>记忆提示：</strong>stream（溪流）+ line（线）→ 像溪水一样顺畅流动，没有障碍 = 精简、流线化。想象去掉阻碍让工作像水流一样畅通无阻。</span>
+      <span class="tip-text">记忆提示：与 convince 的区别 — persuade 强调通过讲道理/证据劝说；convince 强调让对方内心信服。可联想"per-suade"中"suede（麂皮）"很柔软，用柔软的方式说服人。</span>
     </div>
   </div>
 
-  <!-- 4. productive -->
-  <div class="card">
-    <span class="card-num">04 / 05</span>
-    <div class="word">productive</div>
-    <div class="phonetic-row">
-      <span class="phonetic">/ prəˈdʌk.tɪv /</span>
-      <span class="pos">adj. 形容词</span>
+  <!-- Card 4: influence -->
+  <div class="card" style="--card-color: linear-gradient(90deg, #f59e0b, #fbbf24);">
+    <div class="card-num">04</div>
+    <div class="word-main">
+      <span class="word">influence</span>
+      <span class="pos-badge">v/n. 动/名</span>
     </div>
-    <div class="meaning">高效的；富有成效的；多产的</div>
-    <div class="speak-row">
-      <button class="speak-btn us" onclick="speak('productive','us')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-        美式
+    <div class="phonetics">
+      <button class="phonetic-btn" onclick="speak('influence','us',this)">
+        <span class="flag">🇺🇸</span> <span>/ˈɪnfluəns/</span> <span>▶</span>
       </button>
-      <button class="speak-btn gb" onclick="speak('productive','gb')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
-        英式
+      <button class="phonetic-btn" onclick="speak('influence','gb',this)">
+        <span class="flag">🇬🇧</span> <span>/ˈɪnflʊəns/</span> <span>▶</span>
       </button>
     </div>
-    <div class="examples-label">例句</div>
-    <div class="example">
-      <div class="en">I find I am most productive in the early morning before any meetings.</div>
-      <div class="zh">我发现在任何会议开始之前的清晨，我的效率最高。</div>
-    </div>
-    <div class="example">
-      <div class="en">It was a very productive meeting — we resolved three major issues.</div>
-      <div class="zh">那是一次非常高效的会议，我们解决了三个重要问题。</div>
-    </div>
-    <div class="tip">
+    <div class="meaning">影响；施加影响；影响力</div>
+    <hr class="divider">
+    <div class="section-label">例句</div>
+    <div class="example-en">"Her feedback greatly influenced the final design of the product."</div>
+    <div class="example-zh">她的反馈对产品的最终设计产生了很大影响。</div>
+    <div class="tip-box">
       <span class="tip-icon">💡</span>
-      <span class="tip-text"><strong>记忆提示：</strong>produce（生产）+ -tive → 能"持续生产"成果的 = 高效多产的。反义词 unproductive（低效的）也常用于职场表达，一起记效果更好！</span>
+      <span class="tip-text">记忆提示："in-"（进入）+ "flu"（流动，同 fluid）→ 像水一样流入并改变事物 = 影响。职场高频词组：sphere of influence（影响范围）。</span>
     </div>
   </div>
 
-  <!-- 5. calibrate -->
-  <div class="card">
-    <span class="card-num">05 / 05</span>
-    <div class="word">calibrate</div>
-    <div class="phonetic-row">
-      <span class="phonetic">/ ˈkæl.ɪ.breɪt /</span>
-      <span class="pos">v. 动词</span>
+  <!-- Card 5: negotiate -->
+  <div class="card" style="--card-color: linear-gradient(90deg, #ec4899, #f472b6);">
+    <div class="card-num">05</div>
+    <div class="word-main">
+      <span class="word">negotiate</span>
+      <span class="pos-badge">v. 动词</span>
     </div>
-    <div class="meaning">校准；调校；（对工作节奏/期望）进行精确调整</div>
-    <div class="speak-row">
-      <button class="speak-btn us" onclick="speak('calibrate','us')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-        美式
+    <div class="phonetics">
+      <button class="phonetic-btn" onclick="speak('negotiate','us',this)">
+        <span class="flag">🇺🇸</span> <span>/nɪˈɡoʊʃieɪt/</span> <span>▶</span>
       </button>
-      <button class="speak-btn gb" onclick="speak('calibrate','gb')">
-        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM18.5 12c0-3.02-1.74-5.63-4.5-6.93v2.06c1.99 1.09 3 3.08 3 4.87s-1.01 3.78-3 4.87v2.06c2.76-1.3 4.5-3.91 4.5-6.93z"/></svg>
-        英式
+      <button class="phonetic-btn" onclick="speak('negotiate','gb',this)">
+        <span class="flag">🇬🇧</span> <span>/nɪˈɡəʊʃɪeɪt/</span> <span>▶</span>
       </button>
     </div>
-    <div class="examples-label">例句</div>
-    <div class="example">
-      <div class="en">We need to calibrate our expectations to match the project timeline.</div>
-      <div class="zh">我们需要根据项目时间线调校我们的预期。</div>
-    </div>
-    <div class="example">
-      <div class="en">After the feedback, she calibrated her approach to better suit the team.</div>
-      <div class="zh">在收到反馈后，她调整了自己的方式以更好地适应团队。</div>
-    </div>
-    <div class="tip">
+    <div class="meaning">谈判；协商；磋商达成协议</div>
+    <hr class="divider">
+    <div class="section-label">例句</div>
+    <div class="example-en">"We need to negotiate the contract terms before signing."</div>
+    <div class="example-zh">我们需要在签约前协商合同条款。</div>
+    <div class="tip-box">
       <span class="tip-icon">💡</span>
-      <span class="tip-text"><strong>记忆提示：</strong>caliber（口径/能力标准）+ -ate → 像调枪口径一样精确调整 = 校准。职场中常说"calibrate expectations"（校准预期），非常地道！</span>
+      <span class="tip-text">记忆提示："neg-"（否定）+ "otiate"（空闲/leisure）→ 没有空闲，必须谈判 = 谈判。名词形式 negotiation 在商务邮件中极为常见。</span>
     </div>
   </div>
 
-</div><!-- /grid -->
+  <!-- Card 6: advocate -->
+  <div class="card" style="--card-color: linear-gradient(90deg, #ef4444, #f87171);">
+    <div class="card-num">06</div>
+    <div class="word-main">
+      <span class="word">advocate</span>
+      <span class="pos-badge">v/n. 动/名</span>
+    </div>
+    <div class="phonetics">
+      <button class="phonetic-btn" onclick="speak('advocate','us',this)">
+        <span class="flag">🇺🇸</span> <span>/ˈædvəkeɪt/</span> <span>▶</span>
+      </button>
+      <button class="phonetic-btn" onclick="speak('advocate','gb',this)">
+        <span class="flag">🇬🇧</span> <span>/ˈædvəkeɪt/</span> <span>▶</span>
+      </button>
+    </div>
+    <div class="meaning">倡导；支持；拥护者；提倡</div>
+    <hr class="divider">
+    <div class="section-label">例句</div>
+    <div class="example-en">"She advocates for work-life balance in the organization."</div>
+    <div class="example-zh">她在组织中倡导工作与生活的平衡。</div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text">记忆提示："ad-"（向着）+ "voc"（声音，同 vocal）→ 发出声音支持某事 = 倡导。注意：动词读 /ˈædvəkeɪt/，名词（倡导者）也读 /ˈædvəkɪt/，尾音不同。</span>
+    </div>
+  </div>
 
-<footer>
-  <p>
-    <span class="series">第 11 期</span> &nbsp;·&nbsp; 2026年5月27日 &nbsp;·&nbsp; 主题：时间管理与效率提升
-  </p>
-  <p style="margin-top:8px;">
-    <a href="https://xljy.github.io" target="_blank">← 返回主页</a>
-  </p>
-</footer>
+</div>
+
+<div class="footer">
+  <div class="issue">第 12 期 · Issue #12</div>
+  <div>📅 2026年5月28日 · 主题：职场影响力与说服表达</div>
+  <div style="margin-top:8px; color:#1e293b;">
+    已学单词：convince · credibility · persuade · influence · negotiate · advocate
+  </div>
+  <div style="margin-top:16px; color:#1e293b; font-size:12px;">
+    Powered by WorkBuddy · 每日6词，持续精进
+  </div>
+</div>
 
 <script>
-  /* ── Web Speech API ── */
-  let voices = [];
-  function loadVoices() {
-    voices = window.speechSynthesis.getVoices();
-  }
-  window.speechSynthesis.onvoiceschanged = loadVoices;
-  loadVoices();
+// 进度点
+const words = ['convince','credibility','persuade','influence','negotiate','advocate'];
+const dotsContainer = document.getElementById('progressDots');
+words.forEach((w, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  dot.title = w;
+  dot.addEventListener('click', () => {
+    document.querySelectorAll('.card')[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  dotsContainer.appendChild(dot);
+});
 
-  function speak(word, accent) {
-    if (!('speechSynthesis' in window)) {
-      alert('您的浏览器不支持语音功能，请使用 Chrome 或 Edge。');
-      return;
+// 滚动高亮进度点
+const cards = document.querySelectorAll('.card');
+const dots = document.querySelectorAll('.dot');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(cards).indexOf(entry.target);
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === idx);
+        d.classList.toggle('done', i < idx);
+      });
     }
-    window.speechSynthesis.cancel();
-    const utt = new SpeechSynthesisUtterance(word);
-    const lang = accent === 'us' ? 'en-US' : 'en-GB';
-    utt.lang = lang;
-    utt.rate = 0.88;
-    utt.pitch = 1;
+  });
+}, { threshold: 0.6 });
+cards.forEach(c => observer.observe(c));
 
-    if (voices.length === 0) voices = window.speechSynthesis.getVoices();
-    const match = voices.find(v => v.lang === lang) ||
-                  voices.find(v => v.lang.startsWith('en'));
-    if (match) utt.voice = match;
-
-    window.speechSynthesis.speak(utt);
+// 发音函数
+function speak(word, accent, btn) {
+  if (!window.speechSynthesis) {
+    alert('您的浏览器不支持语音合成，请使用Chrome或Edge。');
+    return;
   }
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(word);
+  utter.rate = 0.85;
+  utter.pitch = 1;
 
-  /* ── Active dot on scroll ── */
-  const cards = document.querySelectorAll('.card');
-  const dots  = document.querySelectorAll('.dot');
+  const voices = window.speechSynthesis.getVoices();
+  const langCode = accent === 'us' ? 'en-US' : 'en-GB';
+  const matched = voices.find(v => v.lang === langCode) || voices.find(v => v.lang.startsWith('en'));
+  if (matched) utter.voice = matched;
+  utter.lang = langCode;
 
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const i = [...cards].indexOf(e.target);
-        dots.forEach(d => d.classList.remove('active'));
-        if (dots[i]) dots[i].classList.add('active');
-      }
-    });
-  }, { threshold: 0.5 });
+  btn.classList.add('speaking');
+  utter.onend = () => btn.classList.remove('speaking');
+  utter.onerror = () => btn.classList.remove('speaking');
 
-  cards.forEach(c => obs.observe(c));
+  window.speechSynthesis.speak(utter);
+}
+
+// iOS/Safari 需要先加载 voices
+if (window.speechSynthesis && window.speechSynthesis.getVoices().length === 0) {
+  window.speechSynthesis.addEventListener('voiceschanged', () => {});
+}
 </script>
-
 </body>
 </html>
