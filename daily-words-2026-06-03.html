@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日英语单词 | 2026年6月3日</title>
+<style>
+:root {
+  --bg: #0a0e17;
+  --card: #111827;
+  --card2: #1a2332;
+  --border: #1e2d3d;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --accent: #3b82f6;
+  --green: #22c55e;
+  --orange: #f97316;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+header {
+  text-align: center;
+  padding: 48px 20px 36px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  border-bottom: 1px solid var(--border);
+}
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+header .meta { color: var(--text2); font-size: 1rem; }
+header .meta span { color: var(--accent); font-weight: 600; }
+.container { max-width: 860px; margin: 0 auto; padding: 32px 20px; }
+.word-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.word-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.word-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.word-num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 28px;
+}
+.word-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.word-phonetic {
+  font-size: 0.95rem;
+  color: var(--text2);
+  font-style: italic;
+}
+.word-pos {
+  display: inline-block;
+  padding: 2px 10px;
+  background: rgba(59,130,246,0.15);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-left: 8px;
+}
+.word-meaning {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+.word-examples {
+  background: var(--card2);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+.word-examples .en {
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  font-style: italic;
+}
+.word-examples .zh {
+  color: var(--text2);
+  font-size: 0.85rem;
+}
+.word-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--orange);
+  line-height: 1.6;
+}
+.word-tip::before {
+  content: "💡";
+  flex-shrink: 0;
+}
+.voice-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.voice-btn {
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card2);
+  color: var(--text2);
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.voice-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(59,130,246,0.1);
+}
+.voice-btn.playing {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(34,197,94,0.1);
+}
+.theme-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(167,139,250,0.2));
+  border: 1px solid rgba(167,139,250,0.3);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--purple);
+  margin-bottom: 24px;
+}
+footer {
+  text-align: center;
+  padding: 32px 0;
+  color: var(--text2);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+}
+footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📚 每日 6 个英语单词</h1>
+  <p class="meta">第 <span>16</span> 期 · 2026年6月3日 周三</p>
+</header>
+
+<div class="container">
+  <div class="theme-badge">🎯 本期主题：职场沟通与效率提升</div>
+
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">1</span>
+      <span class="word-title">collaborate</span>
+      <span class="word-phonetic">/kəˈlæbəreɪt/</span>
+      <span class="word-pos">verb</span>
+    </div>
+    <div class="word-meaning"><strong>词义：</strong>合作；协作；协同工作</div>
+    <div class="word-examples">
+      <div class="en">We need to <strong>collaborate</strong> with the marketing team on this project.</div>
+      <div class="zh">我们需要和市场部协作推进这个项目。</div>
+    </div>
+    <div class="word-tip">词根 "col-" 表示"一起"，"labor" 表示"劳动"——一起劳动就是"合作"。联想：co-worker + labor = collaborate。</div>
+    <div class="voice-btns">
+      <button class="voice-btn" onclick="speak('collaborate', 'en-US')">🇺🇸 美式发音</button>
+      <button class="voice-btn" onclick="speak('collaborate', 'en-GB')">🇬🇧 英式发音</button>
+    </div>
+  </div>
+
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">2</span>
+      <span class="word-title">delegate</span>
+      <span class="word-phonetic">/ˈdelɪɡeɪt/</span>
+      <span class="word-pos">verb</span>
+    </div>
+    <div class="word-meaning"><strong>词义：</strong>委托；授权；分派任务</div>
+    <div class="word-examples">
+      <div class="en">A good manager knows how to <strong>delegate</strong> tasks effectively.</div>
+      <div class="zh">一个好的管理者知道如何有效委派任务。</div>
+    </div>
+    <div class="word-tip">管理者必备技能。记住：delegate = de（下放）+ leg（指派）+ ate。不要什么都自己做，学会 delegate！</div>
+    <div class="voice-btns">
+      <button class="voice-btn" onclick="speak('delegate', 'en-US')">🇺🇸 美式发音</button>
+      <button class="voice-btn" onclick="speak('delegate', 'en-GB')">🇬🇧 英式发音</button>
+    </div>
+  </div>
+
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">3</span>
+      <span class="word-title">concise</span>
+      <span class="word-phonetic">/kənˈsaɪs/</span>
+      <span class="word-pos">adjective</span>
+    </div>
+    <div class="word-meaning"><strong>词义：</strong>简洁的；简明的；言简意赅的</div>
+    <div class="word-examples">
+      <div class="en">Please keep your report <strong>concise</strong> — no more than two pages.</div>
+      <div class="zh">请保持报告简洁——不要超过两页。</div>
+    </div>
+    <div class="word-tip">"con-"（彻底）+ "cise"（切）= 彻底切掉多余的 → 简洁。同根词：precise（精确的）、incisive（一针见血的）。</div>
+    <div class="voice-btns">
+      <button class="voice-btn" onclick="speak('concise', 'en-US')">🇺🇸 美式发音</button>
+      <button class="voice-btn" onclick="speak('concise', 'en-GB')">🇬🇧 英式发音</button>
+    </div>
+  </div>
+
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">4</span>
+      <span class="word-title">implement</span>
+      <span class="word-phonetic">/ˈɪmplɪment/</span>
+      <span class="word-pos">verb</span>
+    </div>
+    <div class="word-meaning"><strong>词义：</strong>实施；执行；落实</div>
+    <div class="word-examples">
+      <div class="en">It's time to <strong>implement</strong> the new strategy across all departments.</div>
+      <div class="zh">是时候在所有部门实施新策略了。</div>
+    </div>
+    <div class="word-tip">职场高频词！计划和想法再好，不 implement 都是空谈。"im-"（进入）+ "ple"（填满）= 把计划填进现实。</div>
+    <div class="voice-btns">
+      <button class="voice-btn" onclick="speak('implement', 'en-US')">🇺🇸 美式发音</button>
+      <button class="voice-btn" onclick="speak('implement', 'en-GB')">🇬🇧 英式发音</button>
+    </div>
+  </div>
+
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">5</span>
+      <span class="word-title">evaluate</span>
+      <span class="word-phonetic">/ɪˈvæljueɪt/</span>
+      <span class="word-pos">verb</span>
+    </div>
+    <div class="word-meaning"><strong>词义：</strong>评估；评价；估值</div>
+    <div class="word-examples">
+      <div class="en">We need to <strong>evaluate</strong> the candidate's experience before making a decision.</div>
+      <div class="zh">我们需要先评估候选人的经验再做决定。</div>
+    </div>
+    <div class="word-tip">"e-"（出）+ "value"（价值）= 把价值算出来 → 评估。同根词：value（价值）、invaluable（无价的）。绩效 review 时常用。</div>
+    <div class="voice-btns">
+      <button class="voice-btn" onclick="speak('evaluate', 'en-US')">🇺🇸 美式发音</button>
+      <button class="voice-btn" onclick="speak('evaluate', 'en-GB')">🇬🇧 英式发音</button>
+    </div>
+  </div>
+
+  <div class="word-card">
+    <div class="word-header">
+      <span class="word-num">6</span>
+      <span class="word-title">prioritize</span>
+      <span class="word-phonetic">/praɪˈɒrɪtaɪz/</span>
+      <span class="word-pos">verb</span>
+    </div>
+    <div class="word-meaning"><strong>词义：</strong>优先处理；按重要性排序</div>
+    <div class="word-examples">
+      <div class="en">You need to <strong>prioritize</strong> your tasks — focus on the most urgent ones first.</div>
+      <div class="zh">你需要给任务排优先级——先处理最紧急的。</div>
+    </div>
+    <div class="word-tip">"priority"（优先）+ "ize"（动词化）= 给事情排顺序。每天工作前先 prioritize，效率翻倍！</div>
+    <div class="voice-btns">
+      <button class="voice-btn" onclick="speak('prioritize', 'en-US')">🇺🇸 美式发音</button>
+      <button class="voice-btn" onclick="speak('prioritize', 'en-GB')">🇬🇧 英式发音</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>📅 第16期 · 2026年6月3日 | 每日6个英语单词</p>
+  <p style="margin-top:4px;opacity:0.7">使用 Web Speech API 发声 · 支持美式和英式发音</p>
+  <p style="margin-top:4px"><a href="https://xljy.github.io/daily-words-2026-06-02.html">← 上一期</a></p>
+</footer>
+
+<script>
+function speak(text, lang) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang;
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    
+    // Highlight active button
+    document.querySelectorAll('.voice-btn').forEach(b => b.classList.remove('playing'));
+    const buttons = document.querySelectorAll('.voice-btn');
+    buttons.forEach(b => {
+      if (b.textContent.includes(lang === 'en-US' ? '美式' : '英式') && 
+          b.closest('.word-card').querySelector('.word-title').textContent === text) {
+        b.classList.add('playing');
+      }
+    });
+    
+    utterance.onend = () => {
+      document.querySelectorAll('.voice-btn').forEach(b => b.classList.remove('playing'));
+    };
+    
+    speechSynthesis.speak(utterance);
+  } else {
+    alert('您的浏览器不支持语音合成。');
+  }
+}
+</script>
+</body>
+</html>
