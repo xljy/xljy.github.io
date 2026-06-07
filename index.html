@@ -1,12 +1,448 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日英语单词 | 最新推荐</title>
-<meta http-equiv="refresh" content="0;url=daily-words-2026-06-06b.html">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语 · 第19期 · 2026-06-07</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-border: #2a2d3e;
+      --accent: #22d3ee;
+      --accent2: #818cf8;
+      --text: #e8eaf6;
+      --muted: #8890a4;
+      --tag: #252840;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      padding: 28px 16px 60px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .theme-tag {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 12px;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(34,211,238,0.18);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 4px 0 0 4px;
+    }
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(34,211,238,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .phonetics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .phonetic-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phonetic-label {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--tag);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .phonetic-text {
+      font-size: 13px;
+      color: var(--accent);
+      font-style: italic;
+    }
+    .speak-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 7px;
+      transition: all 0.15s;
+    }
+    .speak-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .pos {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .definition {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d0d4f5;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .example-en {
+      font-size: 14px;
+      color: #c8ccee;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 2px;
+    }
+    .example-zh {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tip-box {
+      background: rgba(34,211,238,0.10);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 9px 13px;
+      font-size: 13px;
+      color: #b0b8e0;
+      line-height: 1.5;
+    }
+    .tip-box strong {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 30px;
+    }
+    .nav-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-dots span.active {
+      background: var(--accent);
+      transform: scale(1.3);
+    }
+  </style>
 </head>
 <body>
-<p>正在跳转到最新一期... <a href="daily-words-2026-06-06b.html">点击这里</a></p>
+
+<header>
+  <div class="badge">Daily English · Vol.19</div>
+  <h1>每日英语单词</h1>
+  <p>2026年6月7日 · 第19期</p>
+  <div class="theme-tag">🤝 日常生活与社交礼仪</div>
+</header>
+
+<div class="nav-dots" id="navDots">
+  <span class="active"></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="grid" id="wordGrid">
+
+  <!-- 1. courtesy -->
+  <div class="card">
+    <div class="card-num">01</div>
+    <div class="word">courtesy</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈkɜːrtəsi/</span>
+        <button class="speak-btn" onclick="speak('courtesy','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈkɜːtəsi/</span>
+        <button class="speak-btn" onclick="speak('courtesy','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">礼貌，客气；谦恭有礼的行为</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">It's common courtesy to let others exit the elevator before you step in.</div>
+    <div class="example-zh">让别人先出电梯再进去，这是基本的礼貌。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>court（宫廷）+ esy → 宫廷中的礼仪 → 礼貌。联想：courteous（有礼貌的，形容词）。常见搭配：by courtesy of（承蒙……的好意）、common courtesy（基本礼貌）。日常注意：courtesy ≠ courage（勇气），拼写和含义都不同。</div>
+  </div>
+
+  <!-- 2. dilemma -->
+  <div class="card">
+    <div class="card-num">02</div>
+    <div class="word">dilemma</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/dɪˈlemə/</span>
+        <button class="speak-btn" onclick="speak('dilemma','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/dɪˈlemə/</span>
+        <button class="speak-btn" onclick="speak('dilemma','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">困境，两难处境；进退维谷</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">She faced the classic dilemma: pursue a higher salary or follow her passion for teaching.</div>
+    <div class="example-zh">她面临一个经典的困境：追求更高薪水，还是追随自己对教学的热爱。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>di（两个）+ lemma（假设/命题）→ 两个命题都不好选 → 两难。注意双写 m：dilemma（不是 dilema）。常见搭配：face a dilemma（面临两难）、moral dilemma（道德困境）、on the horns of a dilemma（进退两难，形象地像骑在牛角上）。</div>
+  </div>
+
+  <!-- 3. endeavor -->
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="word">endeavor</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ɪnˈdevər/</span>
+        <button class="speak-btn" onclick="speak('endeavor','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ɪnˈdevə/</span>
+        <button class="speak-btn" onclick="speak('endeavour','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. / v. 名词 / 动词</span>
+    <div class="definition">努力，尽力；事业，尝试</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">We will endeavor to deliver the project ahead of schedule, though the timeline is tight.</div>
+    <div class="example-zh">尽管时间紧张，我们将尽力提前完成项目交付。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>en（进入）+ deavor（= duty 职责）→ 投入职责中 → 尽力去做。英式拼写：endeavour。正式用语，常见于商务和法律场景。搭配：endeavor to do sth（尽力做某事）、a worthy endeavor（值得的努力）。NASA 航天飞机就以此命名：Space Shuttle Endeavour。</div>
+  </div>
+
+  <!-- 4. prominent -->
+  <div class="card">
+    <div class="card-num">04</div>
+    <div class="word">prominent</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈprɑːmɪnənt/</span>
+        <button class="speak-btn" onclick="speak('prominent','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈprɒmɪnənt/</span>
+        <button class="speak-btn" onclick="speak('prominent','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">杰出的，著名的；显著的，显眼的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">She played a prominent role in the company's expansion into Southeast Asian markets.</div>
+    <div class="example-zh">她在公司拓展东南亚市场的过程中发挥了举足轻重的作用。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>pro（向前）+ min（伸出，如 mountain 山峰）+ ent → 向前突出的 → 显著的、杰出的。名词：prominence（显著，声望）。三重含义：① 杰出的（a prominent scientist 杰出科学家）② 显眼的（a prominent feature 显著特征）③ 凸起的（a prominent nose 高鼻梁）。</div>
+  </div>
+
+  <!-- 5. reluctant -->
+  <div class="card">
+    <div class="card-num">05</div>
+    <div class="word">reluctant</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/rɪˈlʌktənt/</span>
+        <button class="speak-btn" onclick="speak('reluctant','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/rɪˈlʌktənt/</span>
+        <button class="speak-btn" onclick="speak('reluctant','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">不情愿的，勉强的；犹豫的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">He was reluctant to speak up during meetings, fearing his ideas might be dismissed.</div>
+    <div class="example-zh">他不愿在会议上发言，担心自己的想法会被忽视。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>re（反复）+ luct（挣扎）+ ant → 反复挣扎不想做 → 不情愿的。副词：reluctantly（勉强地）。比 unwilling 更文雅含蓄，常用于职场语境：reluctant to change（不愿改变）、reluctant agreement（勉强同意）。注意别和 reluctant 弄混的不是 reluctant……别和 relevant（相关的）混淆！</div>
+  </div>
+
+  <!-- 6. flourish -->
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="word">flourish</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈflɜːrɪʃ/</span>
+        <button class="speak-btn" onclick="speak('flourish','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈflʌrɪʃ/</span>
+        <button class="speak-btn" onclick="speak('flourish','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. / n. 动词 / 名词</span>
+    <div class="definition">茂盛，繁荣；挥舞；华丽动作</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Small businesses can flourish when given access to the right resources and mentorship.</div>
+    <div class="example-zh">只要能获得合适的资源和指导，小企业就能蓬勃发展。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>flour（花，同 flower 的古拼法）+ ish → 像花一样绽放 → 繁荣、茂盛。三重含义：① 繁荣（business flourishes 生意兴隆）② 茂盛（plants flourish 植物茂盛）③ 挥舞（flourish a sword 挥剑）。名词用法：with a flourish（华丽地，一气呵成地），如签名时潇洒一挥。</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 2026年6月7日 &nbsp;·&nbsp; 第 19 期 &nbsp;·&nbsp; 主题：日常生活与社交礼仪</p>
+  <p style="margin-top:6px;">每日积累，日见精进 · <a href="https://xljy.github.io">xljy.github.io</a></p>
+</footer>
+
+<script>
+  // 等待语音引擎加载
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  function speak(word, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = lang;
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    // 优先匹配指定语言的声音
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+    if (matched) utter.voice = matched;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Nav dots 与卡片滚动联动
+  const dots = document.querySelectorAll('.nav-dots span');
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx >= 0) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(c => observer.observe(c));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
+
 </body>
 </html>
