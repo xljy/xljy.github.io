@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语 · 第20期 · 2026-06-08</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-border: #2a2d3e;
+      --accent: #22d3ee;
+      --accent2: #818cf8;
+      --text: #e8eaf6;
+      --muted: #8890a4;
+      --tag: #252840;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      padding: 28px 16px 60px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .theme-tag {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 12px;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(34,211,238,0.18);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 4px 0 0 4px;
+    }
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(34,211,238,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .phonetics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .phonetic-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phonetic-label {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--tag);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .phonetic-text {
+      font-size: 13px;
+      color: var(--accent);
+      font-style: italic;
+    }
+    .speak-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 7px;
+      transition: all 0.15s;
+    }
+    .speak-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .pos {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .definition {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d0d4f5;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .example-en {
+      font-size: 14px;
+      color: #c8ccee;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 2px;
+    }
+    .example-zh {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tip-box {
+      background: rgba(34,211,238,0.10);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 9px 13px;
+      font-size: 13px;
+      color: #b0b8e0;
+      line-height: 1.5;
+    }
+    .tip-box strong {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 30px;
+    }
+    .nav-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-dots span.active {
+      background: var(--accent);
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Daily English · Vol.20</div>
+  <h1>每日英语单词</h1>
+  <p>2026年6月8日 · 第20期</p>
+  <div class="theme-tag">🧭 领导力与决策</div>
+</header>
+
+<div class="nav-dots" id="navDots">
+  <span class="active"></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="grid" id="wordGrid">
+
+  <!-- 1. decisive -->
+  <div class="card">
+    <div class="card-num">01</div>
+    <div class="word">decisive</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/dɪˈsaɪsɪv/</span>
+        <button class="speak-btn" onclick="speak('decisive','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/dɪˈsaɪsɪv/</span>
+        <button class="speak-btn" onclick="speak('decisive','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">果断的，决断的；决定性的，关键的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">A good manager must be decisive when time is limited and the stakes are high.</div>
+    <div class="example-zh">当时间有限、风险很高时，优秀的管理者必须果断决策。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>decide（决定）+ ive（形容词后缀）→ 能做出决定的 → 果断的。反义词：indecisive（犹豫不决的）。在职场中，decisive 是领导力词汇的标杆——decisive action（果断行动）、decisive victory（决定性胜利）。动词 decide，名词 decision。</div>
+  </div>
+
+  <!-- 2. comprehensive -->
+  <div class="card">
+    <div class="card-num">02</div>
+    <div class="word">comprehensive</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˌkɑːmprɪˈhensɪv/</span>
+        <button class="speak-btn" onclick="speak('comprehensive','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˌkɒmprɪˈhensɪv/</span>
+        <button class="speak-btn" onclick="speak('comprehensive','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">全面的，综合的；详尽的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">We need a comprehensive review of the project before presenting it to the board.</div>
+    <div class="example-zh">在提交给董事会之前，我们需要对项目进行全面审查。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>com（一起/全部）+ prehens（抓住）+ ive → 全部抓住 → 全面的。动词：comprehend（理解、包含）。职场高频词：comprehensive plan（全面计划）、comprehensive insurance（综合险）。容易和 comprehensible（可理解的）混淆——comprehensive（全面的）≠ comprehensible（可理解的）！</div>
+  </div>
+
+  <!-- 3. mitigate -->
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="word">mitigate</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈmɪtɪɡeɪt/</span>
+        <button class="speak-btn" onclick="speak('mitigate','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈmɪtɪɡeɪt/</span>
+        <button class="speak-btn" onclick="speak('mitigate','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">减轻，缓和；降低（风险、影响等）</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Diversifying your investment portfolio can help mitigate financial risks during market downturns.</div>
+    <div class="example-zh">分散投资组合有助于在市场下行时降低财务风险。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>miti（温和的，如 mild）+ gate（大门）→ 为冲击打开一扇缓和之门 → 减轻。职场高频搭配：mitigate risk（降低风险）、mitigate the impact（减轻影响）。名词：mitigation（缓解）。近义词：alleviate、reduce，但 mitigate 更正式，常用于风险管理和法律语境。</div>
+  </div>
+
+  <!-- 4. integrity -->
+  <div class="card">
+    <div class="card-num">04</div>
+    <div class="word">integrity</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ɪnˈteɡrəti/</span>
+        <button class="speak-btn" onclick="speak('integrity','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ɪnˈteɡrəti/</span>
+        <button class="speak-btn" onclick="speak('integrity','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">正直，诚信；完整，完好</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Trust is built on integrity — doing the right thing even when no one is watching.</div>
+    <div class="example-zh">信任建立在诚信之上——即使无人监督，也要做正确的事。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>integer（完整的）+ ity（名词后缀）→ 完好无损的状态 → 完整、正直（人品完整）。双重含义：① 道德层面——正直、诚信（a man of integrity 正直的人）；② 物理/系统层面——完整（data integrity 数据完整性）。联想：integrate（整合）来自同一词根。</div>
+  </div>
+
+  <!-- 5. facilitate -->
+  <div class="card">
+    <div class="card-num">05</div>
+    <div class="word">facilitate</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/fəˈsɪlɪteɪt/</span>
+        <button class="speak-btn" onclick="speak('facilitate','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/fəˈsɪlɪteɪt/</span>
+        <button class="speak-btn" onclick="speak('facilitate','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">促进，推动；使更容易</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The new collaboration tool is designed to facilitate communication between remote teams.</div>
+    <div class="example-zh">新的协作工具旨在促进远程团队之间的沟通。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>facile（容易的）+ itate（使……）→ 使事情变得容易 → 促进。名词有两个：facilitation（促进过程）和 facilitator（引导者/推动者——开会时常说的"主持人/引导人"）。职场高频搭配：facilitate the process（推动流程）、facilitate discussion（引导讨论）。注意拼读：facilitate 不是 facil-i-tate，重音在第二音节。</div>
+  </div>
+
+  <!-- 6. scrutinize -->
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="word">scrutinize</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈskruːtənaɪz/</span>
+        <button class="speak-btn" onclick="speak('scrutinize','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈskruːtɪnaɪz/</span>
+        <button class="speak-btn" onclick="speak('scrutinize','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">仔细审查，认真检查；审视</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Before signing any contract, you should scrutinize every clause and consult a legal advisor.</div>
+    <div class="example-zh">签署任何合同之前，你都应该仔细审查每一条款，并咨询法律顾问。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>scrutiny（审查）+ ize（动词后缀）→ 仔细审查。名词：scrutiny，常见搭配：under scrutiny（受到审查）、public scrutiny（公众监督）。scrutinize 比 examine 和 check 程度更深，暗示"逐条逐字地仔细审阅"。在职场中 — scrutinize the budget（仔细审核预算）、scrutinize the proposal（仔细审查提案）。</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 2026年6月8日 &nbsp;·&nbsp; 第 20 期 &nbsp;·&nbsp; 主题：领导力与决策</p>
+  <p style="margin-top:6px;">每日积累，日见精进 · <a href="https://xljy.github.io">xljy.github.io</a></p>
+</footer>
+
+<script>
+  // 等待语音引擎加载
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  function speak(word, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = lang;
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    // 优先匹配指定语言的声音
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+    if (matched) utter.voice = matched;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Nav dots 与卡片滚动联动
+  const dots = document.querySelectorAll('.nav-dots span');
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx >= 0) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(c => observer.observe(c));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
+
+</body>
+</html>
