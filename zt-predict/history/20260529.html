@@ -215,6 +215,33 @@ tr:hover { background: rgba(59,130,246,0.06); }
     color: var(--accent);
     background: rgba(59,130,246,0.1);
 }
+.copy-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #22c55e;
+    background: rgba(34,197,94,0.1);
+    color: #22c55e;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    margin-left: auto;
+}
+.copy-btn:hover { background: rgba(34,197,94,0.2); }
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #22c55e;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.toast.show { opacity: 1; }
 
 footer {
     text-align: center;
@@ -498,12 +525,13 @@ footer a { color: var(--accent); text-decoration: none; }
 <div class="section">
     <h2><span class="icon">📋</span> 完整排名</h2>
     <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterGrade('all')">全部</button>
-        <button class="filter-btn" onclick="filterGrade('S')">S级</button>
-        <button class="filter-btn" onclick="filterGrade('A+')" style="--c:#ff6d00">A+级</button>
-        <button class="filter-btn" onclick="filterGrade('A')">A级</button>
-        <button class="filter-btn" onclick="filterGrade('B+')">B+级</button>
-        <button class="filter-btn" onclick="filterGrade('B')">B级</button>
+        <button class="filter-btn active" onclick="filterGrade('all', event)">全部</button>
+        <button class="filter-btn" onclick="filterGrade('S', event)">S级</button>
+        <button class="filter-btn" onclick="filterGrade('A+', event)" style="--c:#ff6d00">A+级</button>
+        <button class="filter-btn" onclick="filterGrade('A', event)">A级</button>
+        <button class="filter-btn" onclick="filterGrade('B+', event)">B+级</button>
+        <button class="filter-btn" onclick="filterGrade('B', event)">B级</button>
+        <button class="copy-btn" onclick="copyCodes()">📋 复制代码</button>
     </div>
     <div class="table-wrap" style="max-height:600px;overflow-y:auto">
     <table id="rankTable">
@@ -1079,12 +1107,12 @@ footer a { color: var(--accent); text-decoration: none; }
 <footer>
     <p>涨停次日ML预测系统 | 模型：RF+GBDT融合 · Isotonic校准 | AUC: 0.684</p>
     <p style="margin-top:4px">⚠️ 仅供研究参考，不构成投资建议 | 数据来源：首板涨停数据</p>
-    <p style="margin-top:8px">上次更新：2026-06-08 18:54</p>
+    <p style="margin-top:8px">上次更新：2026-06-08 19:47</p>
 </footer>
 </div>
 
 <script>
-function filterGrade(grade) {
+function filterGrade(grade, event) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
     const rows = document.querySelectorAll('#rankTable tbody tr');
@@ -1097,6 +1125,49 @@ function filterGrade(grade) {
         }
     });
 }
+
+function showToast(msg) {
+    let t = document.getElementById('toast');
+    if (!t) {
+        t = document.createElement('div');
+        t.id = 'toast';
+        t.className = 'toast';
+        document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+function copyCodes() {
+    // 只复制当前可见行（尊重筛选），按表格排名顺序
+    const rows = document.querySelectorAll('#rankTable tbody tr');
+    const codes = [];
+    rows.forEach(row => {
+        if (row.style.display === 'none') return;
+        const codeCell = row.querySelector('.code');
+        if (codeCell) codes.push(codeCell.textContent.trim());
+    });
+    if (codes.length === 0) {
+        showToast('没有可复制的股票');
+        return;
+    }
+    const text = codes.join('
+');
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('已复制 ' + codes.length + ' 只股票代码');
+    }).catch(() => {
+        // 降级方案
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('已复制 ' + codes.length + ' 只股票代码');
+    });
+}
 </script>
+<div id="toast" class="toast"></div>
 </body>
 </html>
