@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语 · 第21期 · 2026-06-09</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-border: #2a2d3e;
+      --accent: #22d3ee;
+      --accent2: #f472b6;
+      --text: #e8eaf6;
+      --muted: #8890a4;
+      --tag: #252840;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      padding: 28px 16px 60px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .theme-tag {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 12px;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(244,114,182,0.18);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      border-radius: 4px 0 0 4px;
+    }
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(244,114,182,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .phonetics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .phonetic-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phonetic-label {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--tag);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .phonetic-text {
+      font-size: 13px;
+      color: var(--accent2);
+      font-style: italic;
+    }
+    .speak-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 7px;
+      transition: all 0.15s;
+    }
+    .speak-btn:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .pos {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .definition {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d0d4f5;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .example-en {
+      font-size: 14px;
+      color: #c8ccee;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 2px;
+    }
+    .example-zh {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tip-box {
+      background: rgba(244,114,182,0.10);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 9px 13px;
+      font-size: 13px;
+      color: #b0b8e0;
+      line-height: 1.5;
+    }
+    .tip-box strong {
+      color: var(--accent2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 30px;
+    }
+    .nav-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-dots span.active {
+      background: var(--accent2);
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Daily English · Vol.21</div>
+  <h1>每日英语单词</h1>
+  <p>2026年6月9日 · 第21期</p>
+  <div class="theme-tag">📈 职业发展与学习成长</div>
+</header>
+
+<div class="nav-dots" id="navDots">
+  <span class="active"></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="grid" id="wordGrid">
+
+  <!-- 1. aspire -->
+  <div class="card">
+    <div class="card-num">01</div>
+    <div class="word">aspire</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/əˈspaɪər/</span>
+        <button class="speak-btn" onclick="speak('aspire','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/əˈspaɪə/</span>
+        <button class="speak-btn" onclick="speak('aspire','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">渴望，有志于；追求（更高目标）</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Many young professionals aspire to become leaders in their industry within five years.</div>
+    <div class="example-zh">许多年轻职场人士渴望在五年内成为行业内的领导者。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>a（朝着）+ spire（呼吸，与 spirit 同源）→ 朝着向往的方向呼吸 → 渴望。固定搭配：aspire to do sth / aspire to sth（渴望做某事/追求某事物）。名词：aspiration（抱负、志向）。形容词：aspiring（有抱负的，如 aspiring writer 有抱负的作家）。不要和 inspire（激励）混淆！aspire 是自己渴望，inspire 是激励别人。</div>
+  </div>
+
+  <!-- 2. mentor -->
+  <div class="card">
+    <div class="card-num">02</div>
+    <div class="word">mentor</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈmentɔːr/</span>
+        <button class="speak-btn" onclick="speak('mentor','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈmentɔː/</span>
+        <button class="speak-btn" onclick="speak('mentor','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./v. 名词/动词</span>
+    <div class="definition">导师，指导者；指导，辅导</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Finding a good mentor early in your career can accelerate your professional growth significantly.</div>
+    <div class="example-zh">在职业生涯早期找到一位好导师，能显著加速你的职业成长。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>源自希腊神话——Mentor 是奥德修斯的忠实朋友兼导师，后来这个名字就成了"导师"的代名词。职场高频词：mentor program（导师计划）、reverse mentoring（反向指导——年轻人教资深同事新技术）。和 coach（教练）的区别：mentor 侧重长期职业指引，coach 侧重短期技能训练。memorable 的词源故事：一位名叫 Mentor 的朋友 → 所有导师。</div>
+  </div>
+
+  <!-- 3. competence -->
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="word">competence</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈkɑːmpɪtəns/</span>
+        <button class="speak-btn" onclick="speak('competence','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈkɒmpɪtəns/</span>
+        <button class="speak-btn" onclick="speak('competence','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">能力，胜任力；技能，专长</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Demonstrating strong technical competence is essential, but soft skills are equally important in today's workplace.</div>
+    <div class="example-zh">展现扎实的技术能力至关重要，但在当今职场中，软技能同样不可或缺。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>compete（竞争）+ ence（名词后缀）→ 有能力去竞争 → 胜任力。形容词：competent（胜任的）。近义辨析：competence vs skill — competence 是综合胜任力（能做好的整体能力），skill 是具体技能。职场常见搭配：core competencies（核心能力）、competence framework（能力框架）。反义词：incompetence（不胜任），是很严厉的批评。</div>
+  </div>
+
+  <!-- 4. evaluate -->
+  <div class="card">
+    <div class="card-num">04</div>
+    <div class="word">evaluate</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ɪˈvæljueɪt/</span>
+        <button class="speak-btn" onclick="speak('evaluate','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ɪˈvæljueɪt/</span>
+        <button class="speak-btn" onclick="speak('evaluate','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">评估，评价；判断……的价值或质量</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">HR will evaluate all candidates based on their qualifications, experience, and cultural fit.</div>
+    <div class="example-zh">人力资源部将根据资历、经验和文化契合度对全部候选人进行评估。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>e（出来）+ valu（价值，如 value）+ ate（动词后缀）→ 把价值评估出来 → 评估。名词：evaluation（评估），如 performance evaluation（绩效评估）。近义词辨析：evaluate（基于标准的系统评估）vs assess（评估数量/金额/程度）vs appraise（评估价值，尤其指估值）。联想：value → evaluate → 评出 value。注意发音：重音在第二音节 val，不是第一音节。</div>
+  </div>
+
+  <!-- 5. ambitious -->
+  <div class="card">
+    <div class="card-num">05</div>
+    <div class="word">ambitious</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/æmˈbɪʃəs/</span>
+        <button class="speak-btn" onclick="speak('ambitious','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/æmˈbɪʃəs/</span>
+        <button class="speak-btn" onclick="speak('ambitious','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">有雄心的，有抱负的；野心勃勃的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">She's an ambitious professional who's always looking for new challenges and growth opportunities.</div>
+    <div class="example-zh">她是一位有抱负的职场人，总是在寻找新的挑战和成长机会。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>ambition（雄心、抱负）+ ous（形容词后缀）→ 有雄心的。名词：ambition。注意情感色彩：在英文中 ambitious 可以是褒义（有抱负的）也可以是中性（野心大的，视语境而定）。面试中被问"Are you ambitious?"时，回答"Yes"是很正面的——表示你有上进心。常见搭配：ambitious goal（宏伟目标）、ambitious plan（雄心勃勃的计划）。</div>
+  </div>
+
+  <!-- 6. tangible -->
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="word">tangible</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈtændʒəbl/</span>
+        <button class="speak-btn" onclick="speak('tangible','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈtændʒəbl/</span>
+        <button class="speak-btn" onclick="speak('tangible','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">切实的，有形的；可触摸的，明确的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The training program produced tangible results — a 30% increase in team productivity within three months.</div>
+    <div class="example-zh">这个培训项目产生了切实的成果——三个月内团队生产力提升了30%。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>tang（触摸，如 tangible → "能摸到的"）+ ible（可……的）→ 可触摸的 → 有形的、切实的。反义词：intangible（无形的，如 intangible assets 无形资产）。职场高频搭配：tangible results（切实成果）、tangible benefits（实际好处）、tangible evidence（确凿证据）。面试中常说"I want to make a tangible impact"表示想做出实际可见的贡献，比"make a difference"更专业。</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 2026年6月9日 &nbsp;·&nbsp; 第 21 期 &nbsp;·&nbsp; 主题：职业发展与学习成长</p>
+  <p style="margin-top:6px;">每日积累，日见精进 · <a href="https://xljy.github.io">xljy.github.io</a></p>
+</footer>
+
+<script>
+  // 等待语音引擎加载
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  function speak(word, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = lang;
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    // 优先匹配指定语言的声音
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+    if (matched) utter.voice = matched;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Nav dots 与卡片滚动联动
+  const dots = document.querySelectorAll('.nav-dots span');
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx >= 0) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(c => observer.observe(c));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
+
+</body>
+</html>
