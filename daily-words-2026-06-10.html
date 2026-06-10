@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语 · 第22期 · 2026-06-10</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-border: #2a2d3e;
+      --accent: #22d3ee;
+      --accent2: #a78bfa;
+      --text: #e8eaf6;
+      --muted: #8890a4;
+      --tag: #252840;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      padding: 28px 16px 60px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .theme-tag {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 12px;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(167,139,250,0.18);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      border-radius: 4px 0 0 4px;
+    }
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(167,139,250,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .phonetics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .phonetic-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phonetic-label {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--tag);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .phonetic-text {
+      font-size: 13px;
+      color: var(--accent2);
+      font-style: italic;
+    }
+    .speak-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 7px;
+      transition: all 0.15s;
+    }
+    .speak-btn:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .pos {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .definition {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d0d4f5;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .example-en {
+      font-size: 14px;
+      color: #c8ccee;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 2px;
+    }
+    .example-zh {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tip-box {
+      background: rgba(167,139,250,0.10);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 9px 13px;
+      font-size: 13px;
+      color: #b0b8e0;
+      line-height: 1.5;
+    }
+    .tip-box strong {
+      color: var(--accent2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 30px;
+    }
+    .nav-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-dots span.active {
+      background: var(--accent2);
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Daily English · Vol.22</div>
+  <h1>每日英语单词</h1>
+  <p>2026年6月10日 · 第22期</p>
+  <div class="theme-tag">🏠 居住与生活场景</div>
+</header>
+
+<div class="nav-dots" id="navDots">
+  <span class="active"></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="grid" id="wordGrid">
+
+  <!-- 1. household -->
+  <div class="card">
+    <div class="card-num">01</div>
+    <div class="word">household</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈhaʊshoʊld/</span>
+        <button class="speak-btn" onclick="speak('household','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈhaʊshəʊld/</span>
+        <button class="speak-btn" onclick="speak('household','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./adj. 名词/形容词</span>
+    <div class="definition">家庭，住户；家庭的，家用的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Managing a household budget wisely can help you save for bigger goals like buying a home.</div>
+    <div class="example-zh">精明地管理家庭预算，有助于你为买房等更大的目标攒钱。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>house（房子）+ hold（持有）→ 持有同一栋房子的人 → 一户人家。超级高频搭配：household income（家庭收入）、household chores（家务）、household name（家喻户晓的名字/品牌）。"It's a household name" 是职场常见表达，表示某品牌非常知名。</div>
+  </div>
+
+  <!-- 2. furnish -->
+  <div class="card">
+    <div class="card-num">02</div>
+    <div class="word">furnish</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈfɜːrnɪʃ/</span>
+        <button class="speak-btn" onclick="speak('furnish','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈfɜːnɪʃ/</span>
+        <button class="speak-btn" onclick="speak('furnish','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">布置家具，装修；提供，供应</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The apartment is fully furnished, so you can move in right away without buying any furniture.</div>
+    <div class="example-zh">这套公寓是全装修带家具的，你可以直接拎包入住，不需要买任何家具。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>furniture（家具）的动词形式 → 用家具布置。租房高频词：fully furnished（全家具）、unfurnished（无家具）、partly furnished（部分家具）。第二个意思"提供"同样常用：furnish sb with sth（向某人提供某物），如 "The report furnished us with the data we needed." 名词：furnishing（家具陈设，常用复数 furnishings）。</div>
+  </div>
+
+  <!-- 3. relocate -->
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="word">relocate</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˌriːloʊˈkeɪt/</span>
+        <button class="speak-btn" onclick="speak('relocate','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˌriːləˈkeɪt/</span>
+        <button class="speak-btn" onclick="speak('relocate','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">搬迁，重新安置；迁往新地点</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The company decided to relocate its headquarters from Beijing to Shenzhen to be closer to the tech hub.</div>
+    <div class="example-zh">公司决定将总部从北京迁往深圳，以更靠近科技中心。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>re（重新）+ locate（定位/安置）→ 重新定位 → 搬迁。职场/生活双场景词：公司 relocate（迁址）、员工 relocate（搬家到新城市工作）。名词：relocation（搬迁），搭配 relocation package（搬迁补贴）、relocation assistance（搬迁协助）。面试中如果被问 "Are you willing to relocate?"，意思是"你愿意为了工作搬到其他城市吗？"</div>
+  </div>
+
+  <!-- 4. lease -->
+  <div class="card">
+    <div class="card-num">04</div>
+    <div class="word">lease</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/liːs/</span>
+        <button class="speak-btn" onclick="speak('lease','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/liːs/</span>
+        <button class="speak-btn" onclick="speak('lease','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./v. 名词/动词</span>
+    <div class="definition">租约，租契；出租，租用</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">We signed a two-year lease for the office space, with an option to renew for another year.</div>
+    <div class="example-zh">我们签订了为期两年的办公室租约，并可选择续租一年。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>发音同 "least" 去掉 t。租房/商业必备词：sign a lease（签租约）、break a lease（提前解约）、lease expires（租约到期）、on a lease（以租赁方式）。和 rent 的区别：lease 是正式的租赁合同（通常较长），rent 更侧重"支付租金"这个动作或短期租赁。开车也有 lease（长期租赁），比买新车便宜，到期后归还车辆。</div>
+  </div>
+
+  <!-- 5. renovate -->
+  <div class="card">
+    <div class="card-num">05</div>
+    <div class="word">renovate</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈrenəveɪt/</span>
+        <button class="speak-btn" onclick="speak('renovate','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈrenəveɪt/</span>
+        <button class="speak-btn" onclick="speak('renovate','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">翻新，修缮；改造，更新</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">They bought an old apartment at a low price and spent six months renovating it into a modern home.</div>
+    <div class="example-zh">他们低价买了一套旧公寓，花了六个月把它翻新成了现代化的家。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>re（重新）+ nov（新，同 novel）+ ate（动词后缀）→ 重新变新 → 翻新。名词：renovation（翻新），如 home renovation（家装翻新）、under renovation（正在装修中——商场里常见的告示牌）。近义词辨析：renovate（整体翻新，如房子）vs restore（修复原貌，如古建筑）vs remodel（改变格局，如打墙改造）。形容词：renovated（翻新过的），如 a newly renovated apartment（新装修的公寓）。</div>
+  </div>
+
+  <!-- 6. mortgage -->
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="word">mortgage</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈmɔːrɡɪdʒ/</span>
+        <button class="speak-btn" onclick="speak('mortgage','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈmɔːɡɪdʒ/</span>
+        <button class="speak-btn" onclick="speak('mortgage','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./v. 名词/动词</span>
+    <div class="definition">抵押贷款，按揭；以……作抵押</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">With the current interest rates, taking out a mortgage to buy a house requires careful financial planning.</div>
+    <div class="example-zh">以目前的利率水平，办理按揭贷款买房需要谨慎的财务规划。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>词源超有意思——mort（死亡，如 mortal）+ gage（抵押/誓约）→ "死誓" → 直到还清或死亡才结束的抵押。中文"按揭"就是 mortgage 的粤语音译！高频搭配：take out a mortgage（办按揭）、pay off the mortgage（还清贷款）、mortgage rate（按揭利率）、monthly mortgage payment（月供）。注意：t 在美式英语中不发音，读 /ˈmɔːrɡɪdʒ/。</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 2026年6月10日 &nbsp;·&nbsp; 第 22 期 &nbsp;·&nbsp; 主题：居住与生活场景</p>
+  <p style="margin-top:6px;">每日积累，日见精进 · <a href="https://xljy.github.io">xljy.github.io</a></p>
+</footer>
+
+<script>
+  // 等待语音引擎加载
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  function speak(word, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = lang;
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    // 优先匹配指定语言的声音
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+    if (matched) utter.voice = matched;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Nav dots 与卡片滚动联动
+  const dots = document.querySelectorAll('.nav-dots span');
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx >= 0) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(c => observer.observe(c));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
+
+</body>
+</html>
