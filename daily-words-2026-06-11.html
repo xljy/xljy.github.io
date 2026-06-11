@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语 · 第23期 · 2026-06-11</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-border: #2a2d3e;
+      --accent: #22d3ee;
+      --accent2: #f59e0b;
+      --text: #e8eaf6;
+      --muted: #8890a4;
+      --tag: #252840;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      padding: 28px 16px 60px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .theme-tag {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 12px;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(245,158,11,0.18);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      border-radius: 4px 0 0 4px;
+    }
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(245,158,11,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .phonetics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .phonetic-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phonetic-label {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--tag);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .phonetic-text {
+      font-size: 13px;
+      color: var(--accent2);
+      font-style: italic;
+    }
+    .speak-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 7px;
+      transition: all 0.15s;
+    }
+    .speak-btn:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .pos {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .definition {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d0d4f5;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .example-en {
+      font-size: 14px;
+      color: #c8ccee;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 2px;
+    }
+    .example-zh {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tip-box {
+      background: rgba(245,158,11,0.10);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 9px 13px;
+      font-size: 13px;
+      color: #b0b8e0;
+      line-height: 1.5;
+    }
+    .tip-box strong {
+      color: var(--accent2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 30px;
+    }
+    .nav-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-dots span.active {
+      background: var(--accent2);
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Daily English · Vol.23</div>
+  <h1>每日英语单词</h1>
+  <p>2026年6月11日 · 第23期</p>
+  <div class="theme-tag">🧠 情绪管理与心理健康</div>
+</header>
+
+<div class="nav-dots" id="navDots">
+  <span class="active"></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="grid" id="wordGrid">
+
+  <!-- 1. overwhelmed -->
+  <div class="card">
+    <div class="card-num">01</div>
+    <div class="word">overwhelmed</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˌoʊvərˈwelmd/</span>
+        <button class="speak-btn" onclick="speak('overwhelmed','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˌəʊvəˈwelmd/</span>
+        <button class="speak-btn" onclick="speak('overwhelmed','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">不堪重负的，被压垮的；不知所措的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">She felt overwhelmed by the sheer volume of emails and tasks waiting for her after the vacation.</div>
+    <div class="example-zh">假期回来后，面对堆积如山的邮件和待办任务，她感到不堪重负。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>over（超过）+ whelm（淹没）+ ed（被动的）→ 被淹没了 → 不堪重负。它是日常高频情绪词，比"stressed"程度更深。搭配：feel overwhelmed by sth（被某事压垮）、be overwhelmed with work（工作忙得喘不过气）。注意区分：overwhelming（令人难以承受的事物本身，如 overwhelming evidence 压倒性的证据）。</div>
+  </div>
+
+  <!-- 2. cope -->
+  <div class="card">
+    <div class="card-num">02</div>
+    <div class="word">cope</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/koʊp/</span>
+        <button class="speak-btn" onclick="speak('cope','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/kəʊp/</span>
+        <button class="speak-btn" onclick="speak('cope','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">应对，处理；设法承受</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">To cope with the pressure of tight deadlines, he started meditating for ten minutes every morning.</div>
+    <div class="example-zh">为了应对紧迫截止日期的压力，他开始每天早上冥想十分钟。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>发音简单——就是"扣普"。固定搭配永远是 cope with（应对……），不能单独用！生活/职场万能词：cope with stress（应对压力）、cope with change（适应变化）、cope with uncertainty（应对不确定性）。同义替换：deal with → handle → manage → cope with，cope with 最偏"勉强应付"的意味。</div>
+  </div>
+
+  <!-- 3. anxious -->
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="word">anxious</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈæŋkʃəs/</span>
+        <button class="speak-btn" onclick="speak('anxious','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈæŋkʃəs/</span>
+        <button class="speak-btn" onclick="speak('anxious','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">焦虑的，担忧的；急切渴望的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Many people feel anxious before job interviews, but adequate preparation can significantly ease that nervousness.</div>
+    <div class="example-zh">很多人在面试前会感到焦虑，但充分准备可以大大缓解这种紧张感。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>发音重点：anx 读 /æŋk/，不是 /æŋks/。anxious about 表示"对……感到焦虑"，anxious to do 则表示"急切想……"（带正面意味的渴望），如 "I'm anxious to get started"（我恨不得马上开始）。名词：anxiety（焦虑，注意拼写：anx-i-e-ty），形容词：anxious。职场中更委婉的说法：a bit concerned / a little uneasy。</div>
+  </div>
+
+  <!-- 4. recharge -->
+  <div class="card">
+    <div class="card-num">04</div>
+    <div class="word">recharge</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˌriːˈtʃɑːrdʒ/</span>
+        <button class="speak-btn" onclick="speak('recharge','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˌriːˈtʃɑːdʒ/</span>
+        <button class="speak-btn" onclick="speak('recharge','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v./n. 动词/名词</span>
+    <div class="definition">恢复精力，充电；休整</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Taking a short break to go for a walk helps me recharge and come back to work with a fresh perspective.</div>
+    <div class="example-zh">短暂休息一下出去散个步，能让我恢复精力，以全新的视角回到工作中。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>re（重新）+ charge（充电）→ 最直观地记住！字面义就是"给手机充电"，引申为"给自己充电"。职场/生活超高频：recharge your batteries（给自己充电恢复，固定搭配）、recharge after a long week（漫长一周后休整）。近义表达：unwind / relax / refresh。比 rest 更有"主动恢复"的意味。</div>
+  </div>
+
+  <!-- 5. burnout -->
+  <div class="card">
+    <div class="card-num">05</div>
+    <div class="word">burnout</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈbɜːrnaʊt/</span>
+        <button class="speak-btn" onclick="speak('burnout','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈbɜːnaʊt/</span>
+        <button class="speak-btn" onclick="speak('burnout','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">过度劳累，职业倦怠；精疲力竭</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The company introduced flexible working hours after a survey revealed high levels of employee burnout.</div>
+    <div class="example-zh">调查显示员工职业倦怠程度很高后，公司推出了弹性工作制度。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>burn（燃烧）+ out（耗尽）→ 烧光了 → 燃尽了 → 倦怠。形象到不行！职场心理学核心词汇，英文媒体报道中极度常见。搭配：suffer from burnout（遭受倦怠困扰）、prevent burnout（预防倦怠）、job burnout / workplace burnout（职业倦怠）。短语 burn out 是动词形式："I burned out after working 80-hour weeks for six months."</div>
+  </div>
+
+  <!-- 6. mindful -->
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="word">mindful</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈmaɪndfəl/</span>
+        <button class="speak-btn" onclick="speak('mindful','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈmaɪndfəl/</span>
+        <button class="speak-btn" onclick="speak('mindful','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="definition">留心的，注意的；专注当下的</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Being mindful of how your words affect others is an essential skill for effective teamwork and leadership.</div>
+    <div class="example-zh">留心自己的言辞对他人产生的影响，是高效团队协作和领导力的一项必备技能。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>mind（留意）+ ful（充满）→ 充满留意 → 留心的。两种用法：① mindful of sth（注意/留心某事），如 "Be mindful of your tone"（注意你的语气）② mindfulness（正念/专注当下，近年超火的心理学概念），如 mindfulness meditation（正念冥想）。反义词：mindless（不加思考的，机械的），如 mindless scrolling（无脑刷手机）。职场妙用：比 careful 更优雅、更有"觉知"的意味。</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 2026年6月11日 &nbsp;·&nbsp; 第 23 期 &nbsp;·&nbsp; 主题：情绪管理与心理健康</p>
+  <p style="margin-top:6px;">每日积累，日见精进 · <a href="https://xljy.github.io">xljy.github.io</a></p>
+</footer>
+
+<script>
+  // 等待语音引擎加载
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  function speak(word, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = lang;
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    // 优先匹配指定语言的声音
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+    if (matched) utter.voice = matched;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Nav dots 与卡片滚动联动
+  const dots = document.querySelectorAll('.nav-dots span');
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx >= 0) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(c => observer.observe(c));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
+
+</body>
+</html>
