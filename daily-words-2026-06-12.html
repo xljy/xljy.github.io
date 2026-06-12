@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语 · 第24期 · 2026-06-12</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-border: #2a2d3e;
+      --accent: #22d3ee;
+      --accent2: #10b981;
+      --text: #e8eaf6;
+      --muted: #8890a4;
+      --tag: #252840;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      padding: 28px 16px 60px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .theme-tag {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 12px;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(16,185,129,0.18);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      border-radius: 4px 0 0 4px;
+    }
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(16,185,129,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .phonetics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .phonetic-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phonetic-label {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--tag);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .phonetic-text {
+      font-size: 13px;
+      color: var(--accent2);
+      font-style: italic;
+    }
+    .speak-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 7px;
+      transition: all 0.15s;
+    }
+    .speak-btn:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .pos {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .definition {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d0d4f5;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .example-en {
+      font-size: 14px;
+      color: #c8ccee;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 2px;
+    }
+    .example-zh {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tip-box {
+      background: rgba(16,185,129,0.10);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 9px 13px;
+      font-size: 13px;
+      color: #b0b8e0;
+      line-height: 1.5;
+    }
+    .tip-box strong {
+      color: var(--accent2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 30px;
+    }
+    .nav-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-dots span.active {
+      background: var(--accent2);
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Daily English · Vol.24</div>
+  <h1>每日英语单词</h1>
+  <p>2026年6月12日 · 第24期</p>
+  <div class="theme-tag">⚖️ 职场谈判与冲突解决</div>
+</header>
+
+<div class="nav-dots" id="navDots">
+  <span class="active"></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="grid" id="wordGrid">
+
+  <!-- 1. dispute -->
+  <div class="card">
+    <div class="card-num">01</div>
+    <div class="word">dispute</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/dɪˈspjuːt/</span>
+        <button class="speak-btn" onclick="speak('dispute','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/dɪˈspjuːt/</span>
+        <button class="speak-btn" onclick="speak('dispute','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./v. 名词/动词</span>
+    <div class="definition">争议，纠纷；争论，质疑</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The contract dispute between the two companies was eventually resolved through third-party mediation rather than litigation.</div>
+    <div class="example-zh">两家公司之间的合同争议最终通过第三方调解而非诉讼得到了解决。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>dis（否定/分开）+ pute（思考→认为）→ "各想各的" → 产生争议。最常用作名词搭配：labor dispute（劳资纠纷）、border dispute（边界争端）、beyond dispute（毋庸置疑）。动词用法：I don't dispute her qualifications, but...（我不质疑她的资历，但是……）。比 argument 更正式，比 conflict 程度更轻。</div>
+  </div>
+
+  <!-- 2. mediate -->
+  <div class="card">
+    <div class="card-num">02</div>
+    <div class="word">mediate</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈmiːdieɪt/</span>
+        <button class="speak-btn" onclick="speak('mediate','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈmiːdieɪt/</span>
+        <button class="speak-btn" onclick="speak('mediate','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">调解，斡旋；促成，影响</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The HR manager was brought in to mediate between the two department heads who had been at odds for weeks.</div>
+    <div class="example-zh">人力资源经理被请来调解两位已经争执数周的部门主管之间的关系。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>medi（中间）+ ate（动词后缀）→ "站在中间的人" → 调解。发音重点：重音在第一音节 me-，不是 me-diate。固定搭配：mediate between A and B（在A和B之间调解）、mediate a dispute（调解纠纷）。名词 mediator = 调解人。近义区分：negotiate（直接谈判）、arbitrate（裁决，有法律约束力）、mediate（中间说合，不站队）。</div>
+  </div>
+
+  <!-- 3. concede -->
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="word">concede</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/kənˈsiːd/</span>
+        <button class="speak-btn" onclick="speak('concede','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/kənˈsiːd/</span>
+        <button class="speak-btn" onclick="speak('concede','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">让步，承认（失败/事实）；让与</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">While the startup conceded their pricing was too aggressive, they stood firm on the core value their product delivers.</div>
+    <div class="example-zh">虽然这家初创公司承认自家定价过于激进，但他们在产品带来的核心价值上寸步不让。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>con（一起）+ cede（走）→ "一起让开" → 让步。核心用法：concede defeat（承认失败）、concede a point（在某一点上让步）、concede that...（承认……）。注意发音：cede 读 /siːd/（seed），不是 /sed/。谈判中好用：I'll concede on the timeline if you can meet our budget target.（我在时间线上让步，如果你能达到我们的预算目标。）</div>
+  </div>
+
+  <!-- 4. assert -->
+  <div class="card">
+    <div class="card-num">04</div>
+    <div class="word">assert</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/əˈsɜːrt/</span>
+        <button class="speak-btn" onclick="speak('assert','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/əˈsɜːt/</span>
+        <button class="speak-btn" onclick="speak('assert','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">坚定地主张，断言；维护权利</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">During the meeting, she asserted her position clearly — without aggression, but with undeniable confidence.</div>
+    <div class="example-zh">会上，她清晰地表达了自己的立场——不带攻击性，但有着不容置疑的自信。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>as（朝向）+ sert（连接/加入）→ 把自己"接入"到观点中 → 坚定主张。形容词 assertive（果断自信的，不含贬义）是职场金词：be more assertive in meetings。搭配：assert one's authority（树立权威）、assert your rights（维护你的权利）、assert that...（坚称……）。与 claim 的区别：assert 语气更强、更有"不容置疑"的力度。</div>
+  </div>
+
+  <!-- 5. resolve -->
+  <div class="card">
+    <div class="card-num">05</div>
+    <div class="word">resolve</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/rɪˈzɑːlv/</span>
+        <button class="speak-btn" onclick="speak('resolve','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/rɪˈzɒlv/</span>
+        <button class="speak-btn" onclick="speak('resolve','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v./n. 动词/名词</span>
+    <div class="definition">解决（问题）；决心；决定</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The team held a dedicated workshop to resolve the persistent communication issues that had been slowing down the project.</div>
+    <div class="example-zh">团队召开了一次专题研讨会，以解决长期以来拖慢项目进度的沟通问题。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>re（反复）+ solve（解开）→ "反复解，直到解决"。职场万能用词！动词：resolve a problem/issue/conflict（解决问题/冲突），resolve differences（化解分歧）。名词：show great resolve（展现出坚定的决心）、New Year's resolve（新年决心，同 resolution）。注意和 solve 的区别：solve 偏"算出/解题"（solve a puzzle），resolve 偏"化解/搞定复杂局面"（resolve a dispute）。</div>
+  </div>
+
+  <!-- 6. escalate -->
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="word">escalate</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈeskəleɪt/</span>
+        <button class="speak-btn" onclick="speak('escalate','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈeskəleɪt/</span>
+        <button class="speak-btn" onclick="speak('escalate','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">使升级，加剧；逐级上报</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">If you can't resolve the issue with the vendor directly, don't hesitate to escalate it to your manager before the deadline slips further.</div>
+    <div class="example-zh">如果你无法直接与供应商解决问题，不要犹豫，在截止日期进一步拖延之前将问题上交给你的经理。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>源于"escalator"（自动扶梯）—— 事情像坐扶梯一样一级级往上。两大意思：① 升级/加剧（贬义）：escalate tension/conflict（加剧紧张/冲突）② 逐级上报（职场中性/正面）：escalate an issue to management（把问题上交给管理层）。反义词：de-escalate（降级，缓和）。职场中，适时的 escalation 是成熟的表现，不是推卸责任。</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 2026年6月12日 &nbsp;·&nbsp; 第 24 期 &nbsp;·&nbsp; 主题：职场谈判与冲突解决</p>
+  <p style="margin-top:6px;">每日积累，日见精进 · <a href="https://xljy.github.io">xljy.github.io</a></p>
+</footer>
+
+<script>
+  // 等待语音引擎加载
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  function speak(word, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = lang;
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    // 优先匹配指定语言的声音
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+    if (matched) utter.voice = matched;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Nav dots 与卡片滚动联动
+  const dots = document.querySelectorAll('.nav-dots span');
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx >= 0) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(c => observer.observe(c));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
+
+</body>
+</html>
