@@ -1,12 +1,212 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日英语单词</title>
-<meta http-equiv="refresh" content="0;url=daily-words-2026-06-12.html">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语单词 · Daily English Words</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-border: #2a2d3e;
+      --accent: #22d3ee;
+      --accent2: #38bdf8;
+      --text: #e8eaf6;
+      --muted: #8890a4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      padding: 40px 16px;
+    }
+    header { text-align: center; margin-bottom: 40px; }
+    header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    header p { color: var(--muted); font-size: 14px; }
+
+    .latest {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .latest:hover { transform: translateY(-3px); }
+    .latest .label {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .latest h2 { font-size: 22px; color: #fff; margin-bottom: 6px; }
+    .latest p { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
+    .latest a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: opacity 0.2s;
+    }
+    .latest a:hover { opacity: 0.85; }
+
+    .archive {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .archive h3 {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .archive-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 18px;
+      text-decoration: none;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .archive-item:hover {
+      transform: translateX(4px);
+      border-color: var(--accent2);
+    }
+    .archive-item .info { color: #fff; font-size: 14px; font-weight: 600; }
+    .archive-item .date { color: var(--muted); font-size: 12px; }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
-<p>Redirecting to <a href="daily-words-2026-06-12.html">Daily English Vol.24</a>...</p>
+
+<header>
+  <h1>每日英语单词</h1>
+  <p>Daily English Words · 每日积累，日见精进</p>
+</header>
+
+<div class="latest">
+  <div class="label">LATEST · 最新一期</div>
+  <h2>第 25 期 · 旅行与出行场景</h2>
+  <p>2026-06-13 · itinerary, depart, transit, excursion, customs, destination</p>
+  <a href="daily-words-2026-06-13.html">阅读本期 →</a>
+</div>
+
+<div class="archive">
+  <h3>往期回顾</h3>
+  <div class="archive-list">
+    <a class="archive-item" href="daily-words-2026-06-12.html">
+      <span class="info">第 24 期 · 职场谈判与冲突解决</span>
+      <span class="date">2026-06-12</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-11.html">
+      <span class="info">第 23 期 · 情绪管理与心理健康</span>
+      <span class="date">2026-06-11</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-10.html">
+      <span class="info">第 22 期 · 居住与生活场景</span>
+      <span class="date">2026-06-10</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-09.html">
+      <span class="info">第 21 期 · 职业发展与学习成长</span>
+      <span class="date">2026-06-09</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-08.html">
+      <span class="info">第 20 期 · 领导力与决策</span>
+      <span class="date">2026-06-08</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-07.html">
+      <span class="info">第 19 期 · 日常生活与社交礼仪</span>
+      <span class="date">2026-06-07</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-06b.html">
+      <span class="info">第 18 期 · 科技与创新</span>
+      <span class="date">2026-06-06</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-06.html">
+      <span class="info">第 17 期 · 职场反馈与项目管理</span>
+      <span class="date">2026-06-06</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-04.html">
+      <span class="info">第 16 期 · 财务与金钱管理</span>
+      <span class="date">2026-06-04</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-02.html">
+      <span class="info">第 15 期 · 健康与医疗场景</span>
+      <span class="date">2026-06-02</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-06-01.html">
+      <span class="info">第 14 期 · 社交与生活场景</span>
+      <span class="date">2026-06-01</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-05-30.html">
+      <span class="info">第 13 期 · 人际关系与生活智慧</span>
+      <span class="date">2026-05-30</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-05-28.html">
+      <span class="info">第 12 期 · 职场影响力与说服表达</span>
+      <span class="date">2026-05-28</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-05-27.html">
+      <span class="info">第 11 期 · 时间管理与效率提升</span>
+      <span class="date">2026-05-27</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-05-26.html">
+      <span class="info">第 10 期 · 个人成长与职场表达</span>
+      <span class="date">2026-05-26</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-05-25.html">
+      <span class="info">第 9 期 · 职场核心软技能</span>
+      <span class="date">2026-05-25</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-05-23b.html">
+      <span class="info">第 8 期 · 实用词汇</span>
+      <span class="date">2026-05-23</span>
+    </a>
+    <a class="archive-item" href="daily-words-2026-05-23.html">
+      <span class="info">第 7 期 · 职场/生活常见词汇</span>
+      <span class="date">2026-05-23</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>每日积累，日见精进 · <a href="https://xljy.github.io" style="color:var(--accent2);">xljy.github.io</a></p>
+</footer>
+
 </body>
 </html>
