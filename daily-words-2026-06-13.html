@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语 · 第25期 · 2026-06-13</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card-border: #2a2d3e;
+      --accent: #22d3ee;
+      --accent2: #38bdf8;
+      --text: #e8eaf6;
+      --muted: #8890a4;
+      --tag: #252840;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      padding: 28px 16px 60px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .theme-tag {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 12px;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(56,189,248,0.18);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      border-radius: 4px 0 0 4px;
+    }
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(56,189,248,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .phonetics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .phonetic-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phonetic-label {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--tag);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .phonetic-text {
+      font-size: 13px;
+      color: var(--accent2);
+      font-style: italic;
+    }
+    .speak-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 7px;
+      transition: all 0.15s;
+    }
+    .speak-btn:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .pos {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .definition {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d0d4f5;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .example-en {
+      font-size: 14px;
+      color: #c8ccee;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 2px;
+    }
+    .example-zh {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tip-box {
+      background: rgba(56,189,248,0.10);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 9px 13px;
+      font-size: 13px;
+      color: #b0b8e0;
+      line-height: 1.5;
+    }
+    .tip-box strong {
+      color: var(--accent2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 30px;
+    }
+    .nav-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-dots span.active {
+      background: var(--accent2);
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Daily English · Vol.25</div>
+  <h1>每日英语单词</h1>
+  <p>2026年6月13日 · 第25期</p>
+  <div class="theme-tag">✈️ 旅行与出行场景</div>
+</header>
+
+<div class="nav-dots" id="navDots">
+  <span class="active"></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="grid" id="wordGrid">
+
+  <!-- 1. itinerary -->
+  <div class="card">
+    <div class="card-num">01</div>
+    <div class="word">itinerary</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/aɪˈtɪnəreri/</span>
+        <button class="speak-btn" onclick="speak('itinerary','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/aɪˈtɪnərəri/</span>
+        <button class="speak-btn" onclick="speak('itinerary','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">行程，旅行计划，路线</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Could you email me the detailed itinerary for next week's business trip to Shanghai?</div>
+    <div class="example-zh">你能把下周上海出差的具体行程发给我吗？</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>it（走）+ iner（路）+ ary → "走路路线" → 行程。发音注意：重音在第二音节 tīn，美式四音节、英式五音节。常见搭配：travel itinerary（旅行行程）、tight itinerary（紧凑的行程）、draft an itinerary（拟定行程）。职场常用：I'll share the itinerary once it's finalized.（行程定了我发你。）</div>
+  </div>
+
+  <!-- 2. depart -->
+  <div class="card">
+    <div class="card-num">02</div>
+    <div class="word">depart</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/dɪˈpɑːrt/</span>
+        <button class="speak-btn" onclick="speak('depart','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/dɪˈpɑːt/</span>
+        <button class="speak-btn" onclick="speak('depart','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">v. 动词</span>
+    <div class="definition">出发，启程；离开</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Flight CA1234 is scheduled to depart from Gate 12 at 8:15 a.m. — boarding starts in 20 minutes.</div>
+    <div class="example-zh">CA1234航班将于上午8:15从12号登机口出发——20分钟后开始登机。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>de（离开）+ part（部分/分开）→ "从某处分开" → 出发。名词 departure = 离开/出发，机场里到处都是：Departures（出发大厅）、departure time（出发时间）、departure gate（登机口）。反义词 arrive → arrival。正式用法：depart from（从……出发）、depart on a journey（启程旅行）。口语中不如 leave 常用，但在航班、列车时刻中几乎必用。</div>
+  </div>
+
+  <!-- 3. transit -->
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="word">transit</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈtrænzɪt/</span>
+        <button class="speak-btn" onclick="speak('transit','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈtrænzɪt/</span>
+        <button class="speak-btn" onclick="speak('transit','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./v. 名词/动词</span>
+    <div class="definition">中转，过境；运输，通行</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">We have a six-hour layover in Dubai — long enough to leave the airport during transit.</div>
+    <div class="example-zh">我们在迪拜中转停留六个小时——足够在过境期间离开机场逛逛。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>trans（跨越）+ it（走）→ "跨越行走" → 中转/过境。旅行必备搭配：in transit（在途中/转运中）、transit passenger（过境旅客）、transit visa（过境签证）、mass transit（公共交通）。职场场景：The shipment is currently in transit.（货物正在运输途中。）注意：transit 和 layover 都有"中转"之意，但 transit 更正式，layover 更口语。</div>
+  </div>
+
+  <!-- 4. excursion -->
+  <div class="card">
+    <div class="card-num">04</div>
+    <div class="word">excursion</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ɪkˈskɜːrʒn/</span>
+        <button class="speak-btn" onclick="speak('excursion','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ɪkˈskɜːʃn/</span>
+        <button class="speak-btn" onclick="speak('excursion','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">短途旅行，远足；偏离去</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The conference organizers arranged a half-day excursion to the Great Wall for all international attendees.</div>
+    <div class="example-zh">会议组织者为所有国际参会者安排了半天的长城短途旅行。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>ex（出）+ curs（跑）+ ion → "跑出去" → 短途出行。词根 curs = run，同根词：course（课程/路线）、cursor（光标，"跑来跑去"的东西）。和 trip/tour 的区别：excursion 强调"短途、有组织的集体出游"，常用于商务会议附带的观光活动。搭配：go on an excursion（去远足）、boat excursion（乘船游览）、company excursion（公司团建出游）。</div>
+  </div>
+
+  <!-- 5. customs -->
+  <div class="card">
+    <div class="card-num">05</div>
+    <div class="word">customs</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈkʌstəmz/</span>
+        <button class="speak-btn" onclick="speak('customs','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈkʌstəmz/</span>
+        <button class="speak-btn" onclick="speak('customs','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">海关；关税，进口税</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Please declare all food items and electronic devices at customs — undeclared goods may be confiscated.</div>
+    <div class="example-zh">请在海关申报所有食品和电子设备——未申报的物品可能会被没收。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>custom（习俗）加 s → 海关。为什么？海关最早是收"习惯性税费"的机构，后演变为 customs = 海关/关税。旅行必知：go through customs（过海关）、customs declaration（海关申报）、customs duty（关税）、nothing to declare（无申报通道）。注意区分：custom（单数）= 习俗/风俗；customs（复数）= 海关。口语直接说：How was customs?（海关那边顺利吗？）</div>
+  </div>
+
+  <!-- 6. destination -->
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="word">destination</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˌdestɪˈneɪʃn/</span>
+        <button class="speak-btn" onclick="speak('destination','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˌdestɪˈneɪʃn/</span>
+        <button class="speak-btn" onclick="speak('destination','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">目的地，终点</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Bali has become one of the most popular holiday destinations for young professionals in Asia.</div>
+    <div class="example-zh">巴厘岛已成为亚洲年轻职场人士最热门的度假目的地之一。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>de（向下）+ stin（站）+ ation → "站定的地方" → 目的地。词根 stin/stare = 站，同根词：destination、destiny（命运，"注定要站到的地方"）。搭配：tourist destination（旅游目的地）、reach one's destination（到达目的地）、final destination（终点站）。地铁/航班广播常用：The next stop is our final destination.（下一站是终点站。）引申用法：a wedding destination（婚礼举办地）、a food destination（美食圣地）。</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 2026年6月13日 &nbsp;·&nbsp; 第 25 期 &nbsp;·&nbsp; 主题：旅行与出行场景</p>
+  <p style="margin-top:6px;">每日积累，日见精进 · <a href="https://xljy.github.io">xljy.github.io</a></p>
+</footer>
+
+<script>
+  // 等待语音引擎加载
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  function speak(word, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = lang;
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    // 优先匹配指定语言的声音
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+    if (matched) utter.voice = matched;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Nav dots 与卡片滚动联动
+  const dots = document.querySelectorAll('.nav-dots span');
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx >= 0) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(c => observer.observe(c));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
+
+</body>
+</html>
