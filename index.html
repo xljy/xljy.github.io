@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>每日英语单词 · Daily English Words</title>
+  <title>每日英语 · 第26期 · 2026-06-14</title>
   <style>
     :root {
       --bg: #0f1117;
       --card: #1a1d27;
       --card-border: #2a2d3e;
-      --accent: #22d3ee;
-      --accent2: #38bdf8;
+      --accent: #fb923c;
+      --accent2: #f97316;
       --text: #e8eaf6;
       --muted: #8890a4;
+      --tag: #252840;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -20,193 +21,428 @@
       color: var(--text);
       font-family: 'Segoe UI', 'PingFang SC', sans-serif;
       min-height: 100vh;
-      padding: 40px 16px;
+      padding: 28px 16px 60px;
     }
-    header { text-align: center; margin-bottom: 40px; }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
     header h1 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       background: linear-gradient(120deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    header p { color: var(--muted); font-size: 14px; }
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .theme-tag {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 12px;
+      margin-top: 10px;
+    }
 
-    .latest {
-      max-width: 600px;
-      margin: 0 auto 40px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
       background: var(--card);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 28px 24px;
-      text-align: center;
-      transition: transform 0.2s;
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .latest:hover { transform: translateY(-3px); }
-    .latest .label {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(249,115,22,0.18);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      border-radius: 4px 0 0 4px;
+    }
+    .card-num {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(249,115,22,0.12);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word {
+      font-size: 28px;
+      font-weight: 800;
       color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 4px 12px;
-      border-radius: 20px;
+      margin-bottom: 4px;
+    }
+    .phonetics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
       margin-bottom: 12px;
     }
-    .latest h2 { font-size: 22px; color: #fff; margin-bottom: 6px; }
-    .latest p { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
-    .latest a {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 28px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 15px;
-      transition: opacity 0.2s;
+    .phonetic-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .latest a:hover { opacity: 0.85; }
-
-    .archive {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .archive h3 {
-      font-size: 16px;
+    .phonetic-label {
+      font-size: 11px;
       color: var(--muted);
-      margin-bottom: 16px;
+      background: var(--tag);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .phonetic-text {
+      font-size: 13px;
+      color: var(--accent2);
+      font-style: italic;
+    }
+    .speak-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 7px;
+      transition: all 0.15s;
+    }
+    .speak-btn:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .pos {
+      display: inline-block;
+      background: var(--tag);
+      color: var(--accent2);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .definition {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d0d4f5;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
     }
-    .archive-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .example-en {
+      font-size: 14px;
+      color: #c8ccee;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 2px;
     }
-    .archive-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 12px 18px;
-      text-decoration: none;
-      transition: transform 0.15s, border-color 0.15s;
+    .example-zh {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
     }
-    .archive-item:hover {
-      transform: translateX(4px);
-      border-color: var(--accent2);
+
+    .tip-box {
+      background: rgba(249,115,22,0.10);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 9px 13px;
+      font-size: 13px;
+      color: #b0b8e0;
+      line-height: 1.5;
     }
-    .archive-item .info { color: #fff; font-size: 14px; font-weight: 600; }
-    .archive-item .date { color: var(--muted); font-size: 12px; }
+    .tip-box strong {
+      color: var(--accent2);
+    }
 
     footer {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 44px;
       color: var(--muted);
       font-size: 13px;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-bottom: 30px;
+    }
+    .nav-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-dots span.active {
+      background: var(--accent2);
+      transform: scale(1.3);
     }
   </style>
 </head>
 <body>
 
 <header>
+  <div class="badge">Daily English · Vol.26</div>
   <h1>每日英语单词</h1>
-  <p>Daily English Words · 每日积累，日见精进</p>
+  <p>2026年6月14日 · 第26期</p>
+  <div class="theme-tag">🛒 消费与购物场景</div>
 </header>
 
-<div class="latest">
-  <div class="label">LATEST · 最新一期</div>
-  <h2>第 25 期 · 旅行与出行场景</h2>
-  <p>2026-06-13 · itinerary, depart, transit, excursion, customs, destination</p>
-  <a href="daily-words-2026-06-13.html">阅读本期 →</a>
+<div class="nav-dots" id="navDots">
+  <span class="active"></span>
+  <span></span><span></span><span></span><span></span><span></span>
 </div>
 
-<div class="archive">
-  <h3>往期回顾</h3>
-  <div class="archive-list">
-    <a class="archive-item" href="daily-words-2026-06-12.html">
-      <span class="info">第 24 期 · 职场谈判与冲突解决</span>
-      <span class="date">2026-06-12</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-11.html">
-      <span class="info">第 23 期 · 情绪管理与心理健康</span>
-      <span class="date">2026-06-11</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-10.html">
-      <span class="info">第 22 期 · 居住与生活场景</span>
-      <span class="date">2026-06-10</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-09.html">
-      <span class="info">第 21 期 · 职业发展与学习成长</span>
-      <span class="date">2026-06-09</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-08.html">
-      <span class="info">第 20 期 · 领导力与决策</span>
-      <span class="date">2026-06-08</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-07.html">
-      <span class="info">第 19 期 · 日常生活与社交礼仪</span>
-      <span class="date">2026-06-07</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-06b.html">
-      <span class="info">第 18 期 · 科技与创新</span>
-      <span class="date">2026-06-06</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-06.html">
-      <span class="info">第 17 期 · 职场反馈与项目管理</span>
-      <span class="date">2026-06-06</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-04.html">
-      <span class="info">第 16 期 · 财务与金钱管理</span>
-      <span class="date">2026-06-04</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-02.html">
-      <span class="info">第 15 期 · 健康与医疗场景</span>
-      <span class="date">2026-06-02</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-06-01.html">
-      <span class="info">第 14 期 · 社交与生活场景</span>
-      <span class="date">2026-06-01</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-05-30.html">
-      <span class="info">第 13 期 · 人际关系与生活智慧</span>
-      <span class="date">2026-05-30</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-05-28.html">
-      <span class="info">第 12 期 · 职场影响力与说服表达</span>
-      <span class="date">2026-05-28</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-05-27.html">
-      <span class="info">第 11 期 · 时间管理与效率提升</span>
-      <span class="date">2026-05-27</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-05-26.html">
-      <span class="info">第 10 期 · 个人成长与职场表达</span>
-      <span class="date">2026-05-26</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-05-25.html">
-      <span class="info">第 9 期 · 职场核心软技能</span>
-      <span class="date">2026-05-25</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-05-23b.html">
-      <span class="info">第 8 期 · 实用词汇</span>
-      <span class="date">2026-05-23</span>
-    </a>
-    <a class="archive-item" href="daily-words-2026-05-23.html">
-      <span class="info">第 7 期 · 职场/生活常见词汇</span>
-      <span class="date">2026-05-23</span>
-    </a>
+<div class="grid" id="wordGrid">
+
+  <!-- 1. bargain -->
+  <div class="card">
+    <div class="card-num">01</div>
+    <div class="word">bargain</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈbɑːrɡɪn/</span>
+        <button class="speak-btn" onclick="speak('bargain','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈbɑːɡɪn/</span>
+        <button class="speak-btn" onclick="speak('bargain','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./v. 名词/动词</span>
+    <div class="definition">便宜货，划算买卖；讨价还价</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">I picked up this leather jacket at the outlet mall — it was a real bargain at 70% off!</div>
+    <div class="example-zh">我在奥特莱斯淘到了这件皮夹克——打三折，真划算！</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>联想"bar（酒吧）+ gain（获得）"→ 在酒吧砍价成功获得便宜货。常见搭配：bargain price（特价）、bargain hunter（淘便宜货的人）、bargain over the price（讨价还价）、strike a bargain（达成交易）。口语高频：It's a bargain!（太划算了！）注意：bargain 做动词时不及物，bargain with sb over sth 表示"与某人就某事讨价还价"。</div>
   </div>
+
+  <!-- 2. refund -->
+  <div class="card">
+    <div class="card-num">02</div>
+    <div class="word">refund</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈriːfʌnd/</span>
+        <button class="speak-btn" onclick="speak('refund','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈriːfʌnd/</span>
+        <button class="speak-btn" onclick="speak('refund','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./v. 名词/动词</span>
+    <div class="definition">退款，退还（款项）</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The online store issued a full refund within 24 hours after I returned the defective headphones — excellent customer service.</div>
+    <div class="example-zh">我退回有问题的耳机后，这家网店在24小时内全额退款了——售后真不错。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>re（回）+ fund（资金）→ 资金返还 → 退款。名词和动词发音相同，重音都在第一音节。常见搭配：full refund（全额退款）、refund policy（退款政策）、tax refund（退税）、refund request（退款申请）。出国购物必知：duty-free refund（免税退款）、claim a VAT refund（申请增值税退税）。和 reimburse 的区别：refund 指商家退款，reimburse 指报销费用。</div>
+  </div>
+
+  <!-- 3. warranty -->
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="word">warranty</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈwɔːrənti/</span>
+        <button class="speak-btn" onclick="speak('warranty','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈwɒrənti/</span>
+        <button class="speak-btn" onclick="speak('warranty','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">保修单，保证书；保修期</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">The laptop comes with a three-year manufacturer's warranty covering all hardware defects and repair costs.</div>
+    <div class="example-zh">这款笔记本附带三年厂家保修，涵盖所有硬件缺陷和维修费用。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>warrant（保证/授权）+ y → 正式的保证书 → 保修。发音注意：英式 /ˈwɒrənti/，美式 /ˈwɔːrənti/，不是"war-ran-ty"三段读法。常见搭配：under warranty（在保修期内）、extended warranty（延长保修）、warranty expires（保修到期）、void the warranty（使保修失效，比如自己拆机）。买电子产品必问：How long is the warranty?（保修多长时间？）</div>
+  </div>
+
+  <!-- 4. subscription -->
+  <div class="card">
+    <div class="card-num">04</div>
+    <div class="word">subscription</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/səbˈskrɪpʃn/</span>
+        <button class="speak-btn" onclick="speak('subscription','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/səbˈskrɪpʃn/</span>
+        <button class="speak-btn" onclick="speak('subscription','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">订阅，订购；会员费</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">I'm thinking about canceling my gym subscription since I haven't been there in three months — what a waste of money.</div>
+    <div class="example-zh">我在考虑取消健身房的会员，三个月没去了——真是浪费钱。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>sub（下）+ script（写）+ ion → "在下方签字" → 订阅/订购。词根 script = 写（同根词：describe 描写、prescribe 开处方）。常见搭配：monthly subscription（月度订阅）、subscription fee（订阅费）、subscription model（订阅制模式）、cancel subscription（取消订阅）。现代生活高频词：Netflix/Spotify subscription，几乎所有 App 都在推 subscription 付费模式。动词形式：subscribe to。</div>
+  </div>
+
+  <!-- 5. receipt -->
+  <div class="card">
+    <div class="card-num">05</div>
+    <div class="word">receipt</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/rɪˈsiːt/</span>
+        <button class="speak-btn" onclick="speak('receipt','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/rɪˈsiːt/</span>
+        <button class="speak-btn" onclick="speak('receipt','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n. 名词</span>
+    <div class="definition">收据，发票；收到，收悉</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">Make sure to keep the receipt — you'll need it if you want to exchange the shoes for a different size.</div>
+    <div class="example-zh">一定要保留收据——如果你想换不同尺码的鞋，会用得着。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>re（回）+ ceipt（取，同cept）→ "取回的东西" → 收据。拼写陷阱：p 不发音！很多人写成 "reciept" 或漏掉 p。读音记住 /rɪˈsiːt/，三个音节有 p 但不出声。常见搭配：sales receipt（购物收据）、electronic receipt（电子收据）、receipt of payment（付款回执）、upon receipt（收到后）。职场邮件常用：Upon receipt of this email, please confirm.（收到此邮件后请确认。）</div>
+  </div>
+
+  <!-- 6. discount -->
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="word">discount</div>
+    <div class="phonetics">
+      <div class="phonetic-item">
+        <span class="phonetic-label">美</span>
+        <span class="phonetic-text">/ˈdɪskaʊnt/</span>
+        <button class="speak-btn" onclick="speak('discount','en-US')" title="美式发音">🔊</button>
+      </div>
+      <div class="phonetic-item">
+        <span class="phonetic-label">英</span>
+        <span class="phonetic-text">/ˈdɪskaʊnt/</span>
+        <button class="speak-btn" onclick="speak('discount','en-GB')" title="英式发音">🔊</button>
+      </div>
+    </div>
+    <span class="pos">n./v. 名词/动词</span>
+    <div class="definition">折扣；打折出售；不理会，低估</div>
+    <div class="section-label">例句</div>
+    <div class="example-en">If you sign up for the newsletter, you'll get a 15% discount on your first order — totally worth it.</div>
+    <div class="example-zh">如果你注册订阅邮件，首单可以享受85折优惠——很值。</div>
+    <div class="tip-box"><strong>💡 记忆贴士：</strong>dis（不/去掉）+ count（计算）→ "不算进去" → 折扣。文化差异警告：中文说"打八折"= 20% off，英语说 20% discount。不要问 "80% discount?" 商家会吓死。常见搭配：student discount（学生折扣）、discount code（折扣码）、at a discount（打折出售）、discount store（折扣店）。动词引申义：discount a rumor（不理会谣言）。注意：discount 做名词重音在前（DIS-count），做动词重音在后（dis-COUNT），但现代英语已趋同。</div>
+  </div>
+
 </div>
 
 <footer>
-  <p>每日积累，日见精进 · <a href="https://xljy.github.io" style="color:var(--accent2);">xljy.github.io</a></p>
+  <p>📅 2026年6月14日 &nbsp;·&nbsp; 第 26 期 &nbsp;·&nbsp; 主题：消费与购物场景</p>
+  <p style="margin-top:6px;">每日积累，日见精进 · <a href="https://xljy.github.io">xljy.github.io</a></p>
 </footer>
+
+<script>
+  // 等待语音引擎加载
+  let voices = [];
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+  }
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+
+  function speak(word, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = lang;
+    utter.rate = 0.88;
+    utter.pitch = 1;
+
+    // 优先匹配指定语言的声音
+    const matched = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+    if (matched) utter.voice = matched;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // Nav dots 与卡片滚动联动
+  const dots = document.querySelectorAll('.nav-dots span');
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx >= 0) {
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+  cards.forEach(c => observer.observe(c));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
 
 </body>
 </html>
