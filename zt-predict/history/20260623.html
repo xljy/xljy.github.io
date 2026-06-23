@@ -194,6 +194,30 @@ tr:hover { background: rgba(59,130,246,0.06); }
 .industry { color: var(--text2); font-size: 0.8rem; }
 .grade-cell { border-radius: 4px; text-align: center; }
 
+/* 操作指导样式 */
+.guide-ok { background: rgba(34,197,94,0.04); }
+.guide-warn { background: rgba(234,179,8,0.06); }
+.guide-bad { background: rgba(239,68,68,0.06); }
+.guide-grade {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    min-width: 28px;
+    text-align: center;
+}
+.risk-cell { font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
+.guide-summary {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+.summary-item { font-size: 0.85rem; color: var(--text2); }
+.summary-num { font-weight: 700; color: var(--accent); }
+
 .filter-bar {
     display: flex;
     gap: 8px;
@@ -439,6 +463,146 @@ footer a { color: var(--accent); text-decoration: none; }
                 <span>🏭 化学制药</span>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="icon">🎯</span> 明日操作指导</h2>
+    <div class="guide-summary">
+        <div class="summary-item"><span class="summary-num">4</span> S级 | <span class="summary-num">10</span> 强质量 | <span class="summary-num" style="color:var(--red)">1</span> 不推荐</div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--text2);margin-bottom:12px">仅基于封板数据的客观评估，不构成投资建议。操作前请结合竞价和盘面。</p>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>等级</th><th>代码</th><th>名称</th><th>概率</th><th>质量</th><th>风险/特征</th><th>开盘策略</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="guide-warn">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff1744">S</span></td>
+            <td class="code">SZ002648</td>
+            <td class="name">卫星化学</td>
+            <td class="prob" style="color:#ff1744">52.2%</td>
+            <td class="risk-cell">⚠️ 谨慎</td>
+            <td>封成比105异常</td>
+            <td style="font-size:0.85rem;color:var(--text2)">一字板特征, 竞价盯封单; 封单不减→可抢</td>
+        </tr><tr class="guide-warn">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff1744">S</span></td>
+            <td class="code">SH605118</td>
+            <td class="name">力鼎光电</td>
+            <td class="prob" style="color:#ff1744">26.4%</td>
+            <td class="risk-cell">⚠️ 谨慎</td>
+            <td>封成比150异常</td>
+            <td style="font-size:0.85rem;color:var(--text2)">一字板特征, 竞价盯封单; 封单不减→可抢</td>
+        </tr><tr class="guide-warn">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff1744">S</span></td>
+            <td class="code">SZ001225</td>
+            <td class="name">和泰机电</td>
+            <td class="prob" style="color:#ff1744">24.6%</td>
+            <td class="risk-cell">⚠️ 谨慎</td>
+            <td>封成比133异常</td>
+            <td style="font-size:0.85rem;color:var(--text2)">一字板特征, 竞价盯封单; 封单不减→可抢</td>
+        </tr><tr class="guide-warn">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff1744">S</span></td>
+            <td class="code">SH603725</td>
+            <td class="name">天安新材</td>
+            <td class="prob" style="color:#ff1744">24.5%</td>
+            <td class="risk-cell">⚠️ 谨慎</td>
+            <td>炸板3次</td>
+            <td style="font-size:0.85rem;color:var(--text2)">仅低吸入场(-2%~-4%), 高开不追</td>
+        </tr><tr class="guide-bad">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SZ300665</td>
+            <td class="name">飞鹿股份</td>
+            <td class="prob" style="color:#ff6d00">22.1%</td>
+            <td class="risk-cell">❌ 差</td>
+            <td>炸板8次 换手34%偏高</td>
+            <td style="font-size:0.85rem;color:var(--text2)">不碰, 模型虚高</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SZ002580</td>
+            <td class="name">圣阳股份</td>
+            <td class="prob" style="color:#ff6d00">22.0%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>封板质量好</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">BZ920662</td>
+            <td class="name">方盛股份</td>
+            <td class="prob" style="color:#ff6d00">21.8%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>换手26%偏高</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SZ000566</td>
+            <td class="name">海南海药</td>
+            <td class="prob" style="color:#ff6d00">21.4%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>封板质量好</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SZ002584</td>
+            <td class="name">西陇科学</td>
+            <td class="prob" style="color:#ff6d00">21.1%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>封板质量好</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SZ002038</td>
+            <td class="name">双鹭药业</td>
+            <td class="prob" style="color:#ff6d00">21.0%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>封板质量好</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SH603106</td>
+            <td class="name">恒银科技</td>
+            <td class="prob" style="color:#ff6d00">20.9%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>封板质量好</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SZ002522</td>
+            <td class="name">浙江众成</td>
+            <td class="prob" style="color:#ff6d00">20.6%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>封板质量好</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SZ002549</td>
+            <td class="name">凯美特气</td>
+            <td class="prob" style="color:#ff6d00">20.0%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>封板质量好</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SH600719</td>
+            <td class="name">大连热电</td>
+            <td class="prob" style="color:#ff6d00">19.9%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>换手25%偏高</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr><tr class="guide-ok">
+            <td style="text-align:center"><span class="guide-grade" style="background:#ff6d00">A+</span></td>
+            <td class="code">SZ000756</td>
+            <td class="name">新华制药</td>
+            <td class="prob" style="color:#ff6d00">19.6%</td>
+            <td class="risk-cell">✅ 强</td>
+            <td>封板质量好</td>
+            <td style="font-size:0.85rem;color:var(--text2)">-2%~-5%低开可关注, 仓位≤1成</td>
+        </tr>
+        </tbody>
+    </table>
     </div>
 </div>
 
@@ -1536,7 +1700,7 @@ footer a { color: var(--accent); text-decoration: none; }
 <footer>
     <p>涨停次日ML预测系统 | 模型：RF+GBDT融合 · Isotonic校准 | AUC: 0.684</p>
     <p style="margin-top:4px">⚠️ 仅供研究参考，不构成投资建议 | 数据来源：首板涨停数据</p>
-    <p style="margin-top:8px">上次更新：2026-06-23 20:34</p>
+    <p style="margin-top:8px">上次更新：2026-06-23 21:44</p>
 </footer>
 </div>
 
