@@ -1,0 +1,8 @@
+# 误落入仓库根目录的本机日志 / 临时产物 —— 不要提交、不要发布到 Pages
+debug.log
+*.log
+sogou*
+sgim*
+desktop.ini
+Thumbs.db
+.DS_Store
